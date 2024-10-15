@@ -1,0 +1,31 @@
+# Logs
+logs
+*.log
+lerna-debug.log*
+yarn-debug.log*
+yarn-error.log*
+pnpm-debug.log*
+npm-debug.log*
+
+node_modules
+.DS_Store
+dist-ssr
+dist
+coverage
+*.local
+
+/cypress/screenshots/
+/cypress/videos/
+
+# Editor directories and files
+!.vscode/extensions.json
+.vscode/*
+.vscode
+.idea
+*.njsproj
+*.ntvs*
+*.suo
+*.sln
+*.sw?
+
+*.tsbuildinfo

@@ -1,0 +1,14 @@
+import { createPinia } from 'pinia'
+import { createApp } from 'vue'
+
+import router from './router'
+import app from './App.vue'
+import './main.css'
+
+const vue = createApp(app)
+
+vue.use(createPinia())
+vue.use(router)
+
+const selector = '#app'
+vue.mount(selector)
