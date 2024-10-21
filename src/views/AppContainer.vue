@@ -1,5 +1,6 @@
 <script setup lang="ts">
 import type { IAppComponent } from '@/types/interfeces/IAppCoponent'
+import ElHeader from '@/components/Header/ElHeader.vue'
 import { computed } from 'vue'
 
 /**
@@ -29,6 +30,7 @@ const childClassList = computed(() => {
 <template>
   <section :class="['container', parentClassList]">
     <div :class="[childClassList]">
+      <ElHeader />
       <slot />
     </div>
   </section>

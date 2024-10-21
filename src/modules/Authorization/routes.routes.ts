@@ -5,7 +5,7 @@ import {
 } from './routes/EAuthorizationRoutes'
 
 export default {
-  redirect: { name: EAuthorizationRoutesName.AUTHORIZATION },
+  // redirect: { name: EAuthorizationRoutesName.AUTHORIZATION },
   name: EAuthorizationRoutesName.DEFAULT,
   path: EAuthorizationRoutesPath.DEFAULT,
   meta: { requiresAuth: false },
