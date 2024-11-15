@@ -4,13 +4,13 @@ export const EAuthorizationComponents = {
 }
 
 export enum EAuthorizationRoutesPath {
-  DEFAULT = '/',
+  DEFAULT = '/authrorization',
   AUTHORIZATION = '/authrorization/sign-in',
   REGISTRATION = '/authrorization/sign-up',
 }
 
 export enum EAuthorizationRoutesName {
-  DEFAULT = 'Index',
-  AUTHORIZATION = 'Authrorization',
-  REGISTRATION = 'Registration',
+  DEFAULT = 'Authrorization',
+  AUTHORIZATION = 'SignIn',
+  REGISTRATION = 'SignUp',
 }

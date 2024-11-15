@@ -1,5 +1,5 @@
 <script setup lang="ts">
-import type { IController } from '@/types/interfeces/Controller/IController'
+import type { IController } from '@/models/Controller/IController'
 import { defineProps, withDefaults } from 'vue'
 import { RouterLink } from 'vue-router'
 

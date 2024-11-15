@@ -1,7 +1,8 @@
 <script setup lang="ts">
-import type { IAppComponent } from '@/types/interfeces/IAppCoponent'
+import type { IAppComponent } from '@/models/IAppCoponent'
+import { withDefaults, defineProps, computed } from 'vue'
 import ElHeader from '@/components/Header/ElHeader.vue'
-import { computed } from 'vue'
+import ElFooter from '@/components/Footer/ElFooter.vue'
 
 /**
  * @description withDefaults > defineProps props.
@@ -10,6 +11,7 @@ import { computed } from 'vue'
 const props = withDefaults(defineProps<IAppComponent>(), {
   parentClassList: () => '',
   childClassList: () => '',
+  footer: () => true,
 })
 
 /**
@@ -28,16 +30,11 @@ const childClassList = computed(() => {
 </script>
 
 <template>
-  <section :class="['container', parentClassList]">
+  <section :class="[parentClassList]">
     <div :class="[childClassList]">
       <ElHeader />
-      <slot />
+      <slot name="content" />
+      <ElFooter v-if="footer" />
     </div>
   </section>
 </template>
-
-<style scoped lang="scss">
-.container {
-  @apply mx-auto h-full w-full px-4;
-}
-</style>
