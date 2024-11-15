@@ -10,10 +10,10 @@ import ElBenefits from '../components/ElBenefits.vue'
 </script>
 
 <template>
-  <AppContainer child-class-list="grid grid-cols-1 gap-4 pb-11">
+  <AppContainer child-class-list="grid grid-cols-1 gap-4 pb-14">
     <template #content>
       <section class="home">
-        <section class="">
+        <section class="home__element_none">
           <ElBanner
             :title="HOME_MAIN_BANNER_ITEM.title"
             :text="HOME_MAIN_BANNER_ITEM.text"
