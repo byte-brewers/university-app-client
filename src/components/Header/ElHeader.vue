@@ -10,19 +10,19 @@ import ElRoute from '@/components/Controller/ElRoute.vue';
         <RouterLink :to="HOME">
           <img
             src="https://theme653-apparel-free.myshopify.com/cdn/shop/t/2/assets/logo.png"
-            alt=""
-            class="el-header__logo"
+            alt="Logo"
+            class="el-header__applogotip"
           />
         </RouterLink>
       </div>
-      <div class="el-header__navigation">
+      <nav class="el-header__navigation">
         <div class="el-header__sitemap">
           <ElRoute :routerList="SITEMAP_ITEMS" />
         </div>
         <div class="el-header__actions">
           <ElRoute :routerList="ACTION_ITEMS" />
         </div>
-      </div>
+      </nav>
     </div>
   </header>
 </template>
@@ -40,27 +40,21 @@ import ElRoute from '@/components/Controller/ElRoute.vue';
       @apply mx-auto w-full px-4;
     }
 
-    &applogotip {
-      @apply text-white;
-    }
-
     &navigation {
       @apply flex flex-row gap-4;
     }
 
-    &sitemap {
-      @apply flex flex-row gap-4;
-      @apply text-white;
+    &applogotip {
+      @apply h-8 w-8;
     }
 
+    &sitemap,
     &actions {
       @apply flex flex-row gap-4;
       @apply text-white;
     }
-
-    &logo {
-      @apply h-8 w-8;
-    }
   }
 }
 </style>
+
+<!-- applogotip -->

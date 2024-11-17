@@ -1,17 +1,21 @@
 <script setup lang="ts">
 import type { IButton } from '@/models/Controller/IButton';
-import { defineProps } from 'vue';
+import { computed, defineProps, withDefaults } from 'vue';
 
-withDefaults(defineProps<IButton>(), {
+const props = withDefaults(defineProps<IButton>(), {
   buttonAction: () => null,
-  variant: () => 'default',
+  variant: 'default',
+});
+
+const variantStyle = computed(() => {
+  return `el-button--${props.variant}`;
 });
 </script>
 
 <template>
   <button
-    :class="['el-button el-button--' + variant]"
-    @click.prevent="buttonAction"
+    :class="['el-button', variantStyle]"
+    @click.prevent="props.buttonAction"
   >
     <span class="el-button__text">
       <slot></slot>
@@ -27,43 +31,39 @@ withDefaults(defineProps<IButton>(), {
   @apply focus:outline-none;
   @apply px-6 h-14;
 
-  &-- {
-    &default {
-      @apply text-[#333333] hover:text-[#333333];
-      @apply bg-[#ffffff] hover:bg-[#f0f0f0];
-      @apply border-2 border-[#333333];
-    }
-
-    &primary {
-      @apply text-[#ffffff];
-      @apply bg-[#333333];
-    }
-
-    &secondary {
-      @apply bg-[#1890ff];
-      @apply text-black;
-    }
-
-    &success {
-      @apply bg-[#52c41a];
-      @apply text-black;
-    }
-
-    &warning {
-      @apply bg-[#faad14];
-      @apply text-black;
-    }
-
-    &danger {
-      @apply bg-[#f5222d];
-      @apply text-black;
-    }
+  &--default {
+    @apply text-[#333333] hover:text-[#333333];
+    @apply bg-[#ffffff] hover:bg-[#f0f0f0];
+    @apply border-2 border-[#333333];
   }
 
-  &__ {
-    &text {
-      @apply text-lg font-bold;
-    }
+  &--primary {
+    @apply text-[#ffffff];
+    @apply bg-[#333333];
+  }
+
+  &--secondary {
+    @apply bg-[#1890ff];
+    @apply text-black;
+  }
+
+  &--success {
+    @apply bg-[#52c41a];
+    @apply text-black;
+  }
+
+  &--warning {
+    @apply bg-[#faad14];
+    @apply text-black;
+  }
+
+  &--danger {
+    @apply bg-[#f5222d];
+    @apply text-black;
+  }
+
+  &__text {
+    @apply text-lg font-bold;
   }
 }
 </style>

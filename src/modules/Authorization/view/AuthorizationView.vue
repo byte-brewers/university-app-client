@@ -1,7 +1,7 @@
 <script setup lang="ts">
-import { EAuthorizationRoutesName } from '@/router/collections'
-import ElHorizontalLine from '../components/ElHorizontalLine.vue'
-import AppContainer from '@/views/AppContainer.vue'
+import { EAuthorizationRoutesName } from '@/router/collections';
+import ElHorizontalLine from '../components/ElHorizontalLine.vue';
+import AppContainer from '@/views/AppContainer.vue';
 </script>
 
 <template>

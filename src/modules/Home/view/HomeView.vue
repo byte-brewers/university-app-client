@@ -13,16 +13,8 @@ import ElBenefits from '../components/ElBenefits.vue';
   <AppContainer child-class-list="grid grid-cols-1 gap-4 pb-14">
     <template #content>
       <section class="home">
-        <section class="home__element_none">
-          <ElBanner
-            :banner-title="HOME_MAIN_BANNER_ITEM.bannerTitle"
-            :banner-text="HOME_MAIN_BANNER_ITEM.bannerText"
-            :button-text="HOME_MAIN_BANNER_ITEM.buttonText"
-            :button-goto="HOME_MAIN_BANNER_ITEM.buttonGoto"
-            :is-button="HOME_MAIN_BANNER_ITEM.isButton"
-            :picture="HOME_MAIN_BANNER_ITEM.picture"
-            :variant="HOME_MAIN_BANNER_ITEM.variant"
-          />
+        <section class="home__element-none">
+          <ElBanner v-bind="HOME_MAIN_BANNER_ITEM" />
         </section>
 
         <section class="home__element">
@@ -30,14 +22,7 @@ import ElBenefits from '../components/ElBenefits.vue';
         </section>
 
         <section class="home__element">
-          <ElBanner
-            :banner-title="HOME_DEAL_BANNER_ITEM.bannerTitle"
-            :banner-text="HOME_DEAL_BANNER_ITEM.bannerText"
-            :button-text="HOME_DEAL_BANNER_ITEM.buttonText"
-            :button-goto="HOME_MAIN_BANNER_ITEM.buttonGoto"
-            :is-button="HOME_DEAL_BANNER_ITEM.isButton"
-            :picture="HOME_DEAL_BANNER_ITEM.picture"
-          />
+          <ElBanner v-bind="HOME_DEAL_BANNER_ITEM" />
         </section>
       </section>
     </template>
@@ -49,10 +34,8 @@ import ElBenefits from '../components/ElBenefits.vue';
   @apply grid grid-cols-1 gap-4;
   @apply h-full w-full;
 
-  &__ {
-    &element {
-      @apply px-4;
-    }
+  &__element {
+    @apply px-4;
   }
 }
 </style>

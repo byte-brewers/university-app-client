@@ -3,7 +3,7 @@ import type { IBenefit } from '../models/IBenefit';
 import { withDefaults, defineProps } from 'vue';
 import ElBanner from '@/components/Media/ElBanner.vue';
 
-withDefaults(defineProps<IBenefit>(), {
+const props = withDefaults(defineProps<IBenefit>(), {
   benefitItems: () => [],
 });
 </script>
@@ -11,7 +11,11 @@ withDefaults(defineProps<IBenefit>(), {
 <template>
   <section class="benefits">
     <section class="benefits__container">
-      <div v-for="item in benefitItems" :key="item.id" class="benefits__panel">
+      <div
+        v-for="item in props.benefitItems"
+        :key="item.id"
+        class="benefits__panel"
+      >
         <div class="benefits__element">
           <h4 class="benefits__title">{{ item.title }}</h4>
           <p class="benefits__text">{{ item.text }}</p>
@@ -19,7 +23,7 @@ withDefaults(defineProps<IBenefit>(), {
         <ElBanner
           :is-button="false"
           :picture="item.picture"
-          :alt="item.picture"
+          :alt="item.title"
           variant="ratio"
         />
       </div>

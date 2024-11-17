@@ -19,5 +19,4 @@ export const HOME_DEAL_BANNER_ITEM = {
   isButton: true,
   picture:
     'https://theme653-apparel-free.myshopify.com/cdn/shop/t/2/assets/slide1_image.jpg',
-  variant: 'full',
 };
