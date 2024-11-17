@@ -1,7 +1,22 @@
 <script setup lang="ts">
 import { EAuthorizationRoutesName } from '@/router/collections';
+import { ref } from 'vue';
 import ElHorizontalLine from '../components/ElHorizontalLine.vue';
 import AppContainer from '@/views/AppContainer.vue';
+import ElInput from '@/components/Controller/ElInput.vue';
+import ElButton from '@/components/Controller/ElButton.vue';
+
+const formData = ref<{
+  email: string;
+  pass: string;
+}>({
+  email: '',
+  pass: '',
+});
+
+const signIn = () => {
+  console.log('Sign In', formData.value);
+};
 </script>
 
 <template>
@@ -14,13 +29,33 @@ import AppContainer from '@/views/AppContainer.vue';
         <section class="authorization__container">
           <h1 class="authorization__caption">SIGN IN</h1>
           <section class="authorization__form">
-            <div>Email</div>
-            <div>Password</div>
-            <div>Submit</div>
+            <ElInput
+              label="Your email address"
+              placeholder="Your email address"
+              type="text"
+              v-model="formData.email"
+            />
+
+            <ElInput
+              label="Password"
+              placeholder="Password"
+              type="password"
+              v-model="formData.pass"
+            />
+
+            <ElButton :button-action="signIn" variant="primary"
+              >Sign In</ElButton
+            >
           </section>
-          <RouterLink :to="{ name: EAuthorizationRoutesName.REGISTRATION }"
-            >Registration</RouterLink
-          >
+
+          <h3 class="authorization__footer">
+            If you do not have an account, please
+            <RouterLink
+              :to="{ name: EAuthorizationRoutesName.REGISTRATION }"
+              class="authorization__footer-action"
+              >register</RouterLink
+            >
+          </h3>
           <ElHorizontalLine />
         </section>
       </section>
@@ -40,14 +75,22 @@ import AppContainer from '@/views/AppContainer.vue';
     }
 
     &caption {
-      @apply text-3xl font-bold uppercase text-[#333];
+      @apply text-3xl font-bold uppercase text-[#333333];
     }
 
     &form {
-      @apply border-[1px] border-t-8 border-[#262626] border-solid;
+      @apply border-[1px] border-t-8 border-[#262626];
       @apply bg-white shadow-md;
-      @apply w-full;
+      @apply w-full flex flex-col gap-4;
       @apply p-4;
+    }
+
+    &footer {
+      @apply text-[#333333] text-sm text-center;
+
+      &-action {
+        @apply text-[#262626] font-bold;
+      }
     }
   }
 }

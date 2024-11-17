@@ -29,17 +29,18 @@ const variantStyle = computed(() => {
   @apply transition-all duration-300;
   @apply z-10 hover:shadow-lg;
   @apply focus:outline-none;
-  @apply px-6 h-14;
 
   &--default {
     @apply text-[#333333] hover:text-[#333333];
     @apply bg-[#ffffff] hover:bg-[#f0f0f0];
     @apply border-2 border-[#333333];
+    @apply px-6 h-14;
   }
 
   &--primary {
     @apply text-[#ffffff];
     @apply bg-[#333333];
+    @apply px-6 h-11;
   }
 
   &--secondary {
