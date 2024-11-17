@@ -1,4 +1,7 @@
-import { EAuthorizationRoutesName, EHomeRoutesName } from '@/router/collections'
+import {
+  EAuthorizationRoutesName,
+  EHomeRoutesName,
+} from '@/router/collections';
 
 export const ACTION_ITEMS = [
   {
@@ -15,7 +18,7 @@ export const ACTION_ITEMS = [
     },
     id: 2,
   },
-]
+];
 
 export const SITEMAP_ITEMS = [
   {
@@ -25,4 +28,8 @@ export const SITEMAP_ITEMS = [
     },
     id: 1,
   },
-]
+];
+
+export const HOME = {
+  name: EHomeRoutesName.HOME,
+};

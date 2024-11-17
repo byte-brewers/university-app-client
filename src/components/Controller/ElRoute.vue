@@ -1,9 +1,9 @@
 <script setup lang="ts">
-import type { IController } from '@/models/Controller/IController'
+import type { IRouter } from '@/models/Controller/IRouter'
 import { defineProps, withDefaults } from 'vue'
 import { RouterLink } from 'vue-router'
 
-withDefaults(defineProps<IController>(), {
+withDefaults(defineProps<IRouter>(), {
   routerList: () => [],
 })
 </script>

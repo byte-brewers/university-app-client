@@ -1,17 +1,19 @@
 <script setup lang="ts">
-import { SITEMAP_ITEMS, ACTION_ITEMS } from '@/utils/mock/header-items'
-import ElRoute from '@/components/Controller/ElRoute.vue'
+import { SITEMAP_ITEMS, ACTION_ITEMS, HOME } from '@/utils/mock/header-items';
+import ElRoute from '@/components/Controller/ElRoute.vue';
 </script>
 
 <template>
   <header class="el-header">
     <div class="el-header__container">
       <div class="el-header__sitemap">
-        <img
-          src="https://theme653-apparel-free.myshopify.com/cdn/shop/t/2/assets/logo.png"
-          alt=""
-          class="el-header__logo"
-        />
+        <RouterLink :to="HOME">
+          <img
+            src="https://theme653-apparel-free.myshopify.com/cdn/shop/t/2/assets/logo.png"
+            alt=""
+            class="el-header__logo"
+          />
+        </RouterLink>
       </div>
       <div class="el-header__navigation">
         <div class="el-header__sitemap">

@@ -2,11 +2,11 @@
 import {
   HOME_MAIN_BANNER_ITEM,
   HOME_DEAL_BANNER_ITEM,
-} from '@/utils/mock/banner-items'
-import { BENEFIT_ITEMS } from '@/utils/mock/benefit-items'
-import AppContainer from '@/views/AppContainer.vue'
-import ElBanner from '@/components/Media/ElBanner.vue'
-import ElBenefits from '../components/ElBenefits.vue'
+} from '@/utils/mock/banner-items';
+import { BENEFIT_ITEMS } from '@/utils/mock/benefit-items';
+import AppContainer from '@/views/AppContainer.vue';
+import ElBanner from '@/components/Media/ElBanner.vue';
+import ElBenefits from '../components/ElBenefits.vue';
 </script>
 
 <template>
@@ -15,10 +15,12 @@ import ElBenefits from '../components/ElBenefits.vue'
       <section class="home">
         <section class="home__element_none">
           <ElBanner
-            :title="HOME_MAIN_BANNER_ITEM.title"
-            :text="HOME_MAIN_BANNER_ITEM.text"
+            :banner-title="HOME_MAIN_BANNER_ITEM.bannerTitle"
+            :banner-text="HOME_MAIN_BANNER_ITEM.bannerText"
+            :button-text="HOME_MAIN_BANNER_ITEM.buttonText"
+            :button-goto="HOME_MAIN_BANNER_ITEM.buttonGoto"
+            :is-button="HOME_MAIN_BANNER_ITEM.isButton"
             :picture="HOME_MAIN_BANNER_ITEM.picture"
-            :alt="HOME_MAIN_BANNER_ITEM.alt"
             :variant="HOME_MAIN_BANNER_ITEM.variant"
           />
         </section>
@@ -29,10 +31,12 @@ import ElBenefits from '../components/ElBenefits.vue'
 
         <section class="home__element">
           <ElBanner
-            :title="HOME_DEAL_BANNER_ITEM.title"
-            :text="HOME_DEAL_BANNER_ITEM.text"
+            :banner-title="HOME_DEAL_BANNER_ITEM.bannerTitle"
+            :banner-text="HOME_DEAL_BANNER_ITEM.bannerText"
+            :button-text="HOME_DEAL_BANNER_ITEM.buttonText"
+            :button-goto="HOME_MAIN_BANNER_ITEM.buttonGoto"
+            :is-button="HOME_DEAL_BANNER_ITEM.isButton"
             :picture="HOME_DEAL_BANNER_ITEM.picture"
-            :alt="HOME_DEAL_BANNER_ITEM.alt"
           />
         </section>
       </section>

@@ -1,11 +1,11 @@
 <script setup lang="ts">
-import type { IBenefit } from '../models/IBenefit'
-import { withDefaults, defineProps } from 'vue'
-import ElBanner from '@/components/Media/ElBanner.vue'
+import type { IBenefit } from '../models/IBenefit';
+import { withDefaults, defineProps } from 'vue';
+import ElBanner from '@/components/Media/ElBanner.vue';
 
 withDefaults(defineProps<IBenefit>(), {
   benefitItems: () => [],
-})
+});
 </script>
 
 <template>
@@ -16,7 +16,12 @@ withDefaults(defineProps<IBenefit>(), {
           <h4 class="benefits__title">{{ item.title }}</h4>
           <p class="benefits__text">{{ item.text }}</p>
         </div>
-        <ElBanner :picture="item.picture" :alt="item.alt" variant="ratio" />
+        <ElBanner
+          :is-button="false"
+          :picture="item.picture"
+          :alt="item.picture"
+          variant="ratio"
+        />
       </div>
     </section>
   </section>
@@ -46,8 +51,7 @@ withDefaults(defineProps<IBenefit>(), {
     &element {
       @apply flex flex-col justify-center items-center;
       @apply absolute top-0 left-0 w-full h-full;
-      @apply z-10;
-      @apply bg-white bg-opacity-50;
+      @apply z-20;
     }
 
     &title {

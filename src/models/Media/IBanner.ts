@@ -1,7 +1,9 @@
 export interface IBanner {
-  title?: string
-  text?: string
-  picture: string
-  alt: string
-  variant?: string
+  bannerTitle?: string;
+  bannerText?: string;
+  buttonText?: string;
+  buttonGoto?: string;
+  isButton?: boolean;
+  picture: string;
+  variant?: string;
 }

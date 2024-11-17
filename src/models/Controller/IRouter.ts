@@ -1,8 +1,8 @@
-export interface IController {
-  routerList: Array<IRouter>
+export interface IRouter {
+  routerList: Array<IItem>
 }
 
-interface IRouter {
+interface IItem {
   text: string
   road: IName
   id: number
