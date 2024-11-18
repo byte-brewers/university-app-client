@@ -7,7 +7,12 @@
 html,
 body {
   font-family: 'Ubuntu', sans-serif;
-  @apply h-full bg-gray-300;
+  @apply h-full overflow-x-auto;
+  @apply bg-white;
+}
+
+html {
+  @apply pb-10 pt-16;
 }
 
 #app {

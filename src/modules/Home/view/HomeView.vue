@@ -10,7 +10,7 @@ import ElBenefits from '../components/ElBenefits.vue';
 </script>
 
 <template>
-  <AppContainer child-class-list="grid grid-cols-1 gap-4 pb-14">
+  <AppContainer>
     <template #content>
       <section class="home">
         <section class="home__element-none">
@@ -32,7 +32,7 @@ import ElBenefits from '../components/ElBenefits.vue';
 <style scoped lang="scss">
 .home {
   @apply grid grid-cols-1 gap-4;
-  @apply h-full w-full;
+  @apply h-full w-full pb-4;
 
   &__element {
     @apply px-4;

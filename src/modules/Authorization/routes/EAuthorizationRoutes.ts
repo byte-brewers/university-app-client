@@ -1,7 +1,7 @@
 export const EAuthorizationComponents = {
   AUTHORIZATION: () => import('../view/AuthorizationView.vue'),
   REGISTRATION: () => import('../view/RegistrationView.vue'),
-}
+};
 
 export enum EAuthorizationRoutesPath {
   DEFAULT = '/authrorization',
