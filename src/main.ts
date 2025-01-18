@@ -1,14 +1,20 @@
-import { createPinia } from 'pinia'
-import { createApp } from 'vue'
+import { createPinia } from 'pinia';
+import { createApp } from 'vue';
 
-import router from './router'
-import app from './App.vue'
-import './main.css'
+import { themes } from '@/utils/config/prime-vue';
+import PrimeVue from 'primevue/config';
 
-const vue = createApp(app)
+import router from './router';
+import app from './App.vue';
+import './main.css';
 
-vue.use(createPinia())
-vue.use(router)
+const vue = createApp(app);
 
-const selector = '#app'
-vue.mount(selector)
+vue.use(createPinia());
+vue.use(PrimeVue, {
+  theme: { preset: themes },
+});
+vue.use(router);
+
+const selector = '#app';
+vue.mount(selector);
