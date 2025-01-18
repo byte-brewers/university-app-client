@@ -1,6 +1,7 @@
 import {
   EAuthorizationRoutesName,
   EHomeRoutesName,
+  EBusinessRoutesName,
 } from '@/router/collections';
 
 export const ACTION_ITEMS = [
@@ -25,6 +26,13 @@ export const SITEMAP_ITEMS = [
     text: 'HOME',
     road: {
       name: EHomeRoutesName.HOME,
+    },
+    id: 1,
+  },
+  {
+    text: 'QUIZ',
+    road: {
+      name: EBusinessRoutesName.DEFAULT,
     },
     id: 1,
   },

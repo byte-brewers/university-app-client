@@ -34,7 +34,7 @@ const variantStyle = computed(() => {
     @apply text-[#333333] hover:text-[#333333];
     @apply bg-[#ffffff] hover:bg-[#f0f0f0];
     @apply border-2 border-[#333333];
-    @apply px-6 h-14;
+    @apply px-6 h-11;
   }
 
   &--primary {

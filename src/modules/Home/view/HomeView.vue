@@ -3,7 +3,7 @@ import {
   HOME_MAIN_BANNER_ITEM,
   HOME_DEAL_BANNER_ITEM,
 } from '@/utils/mock/banner-items';
-import { BENEFIT_ITEMS } from '@/utils/mock/benefit-items';
+import { BENEFITS_ITEMS } from '@/utils/mock/benefit-items';
 import AppContainer from '@/views/AppContainer.vue';
 import ElBanner from '@/components/Media/ElBanner.vue';
 import ElBenefits from '../components/ElBenefits.vue';
@@ -18,7 +18,7 @@ import ElBenefits from '../components/ElBenefits.vue';
         </section>
 
         <section class="home__element">
-          <ElBenefits :benefit-items="BENEFIT_ITEMS" />
+          <ElBenefits v-bind="BENEFITS_ITEMS.HOME" />
         </section>
 
         <section class="home__element">

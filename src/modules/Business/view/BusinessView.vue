@@ -1,20 +1,45 @@
 <script setup lang="ts">
 import AppContainer from '@/views/AppContainer.vue';
+import Stepper from 'primevue/stepper';
+import StepList from 'primevue/steplist';
+import StepPanels from 'primevue/steppanels';
+import Step from 'primevue/step';
+import ElInitial from '../components/ElInitial.vue';
+import ElQuizai from '../components/ElQuizai.vue';
+import ElResult from '../components/ElResult.vue';
+
+import { ref } from 'vue';
+
+const stepList = ref([
+  { id: 1, value: '1', label: 'Introduction' },
+  { id: 2, value: '2', label: 'Quiz' },
+  { id: 3, value: '3', label: 'Result' },
+]);
 </script>
 
 <template>
   <AppContainer>
     <template #content>
       <section class="business">
-        <section class="business__navigation">
-          <div class="business__navigation-content">
-            <h1>Business</h1>
-          </div>
-        </section>
+        <Stepper value="1" class="business__content">
+          <StepList>
+            <Step
+              v-for="item in stepList"
+              :key="item.id"
+              :value="item.value"
+              class="business__header"
+            >
+              {{ item.label }}
+            </Step>
+          </StepList>
+          <StepPanels>
+            <ElInitial />
 
-        <section class="business__content">
-          <div>content</div>
-        </section>
+            <ElQuizai />
+
+            <ElResult />
+          </StepPanels>
+        </Stepper>
       </section>
     </template>
   </AppContainer>
@@ -24,17 +49,12 @@ import AppContainer from '@/views/AppContainer.vue';
 .business {
   @apply flex flex-col gap-0 px-4;
 
-  &__navigation {
-    @apply pt-4 sticky top-0 bg-white;
-
-    &-content {
-      @apply border-[1px] border-t-8 border-[#262626];
-      @apply p-4 shadow-lg;
-    }
+  &__header {
+    @apply pointer-events-none;
   }
 
   &__content {
-    @apply p-4;
+    @apply mt-4;
   }
 }
 </style>
