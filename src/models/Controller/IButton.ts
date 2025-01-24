@@ -1,4 +1,5 @@
 export interface IButton {
-  buttonAction: () => void;
+  buttonAction?: () => void;
   variant: string;
+  type?: 'button' | 'submit' | 'reset';
 }

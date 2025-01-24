@@ -1,5 +1,5 @@
 <script setup lang="ts">
-import { HOME, SITEMAP_ITEMS } from '@/utils/mock/header-items';
+import { HOME, SITEMAP_ITEMS, ACTION_ITEMS } from '@/utils/mock/header-items';
 import ElRoute from '@/components/Controller/ElRoute.vue';
 </script>
 
@@ -19,9 +19,9 @@ import ElRoute from '@/components/Controller/ElRoute.vue';
         <div class="el-header__sitemap">
           <ElRoute :routerList="SITEMAP_ITEMS" />
         </div>
-        <!-- <div class="el-header__actions">
+        <div class="el-header__actions">
           <ElRoute :routerList="ACTION_ITEMS" />
-        </div> -->
+        </div>
       </nav>
     </div>
   </header>
@@ -56,5 +56,3 @@ import ElRoute from '@/components/Controller/ElRoute.vue';
   }
 }
 </style>
-
-<!-- applogotip -->

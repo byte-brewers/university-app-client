@@ -1,9 +1,36 @@
 <script setup lang="ts">
+import { useBusiness } from '../composable/useBusiness';
 import ElButton from '@/components/Controller/ElButton.vue';
 import StepPanel from 'primevue/steppanel';
-import { useBusiness } from '../composable/useBusiness';
+import jsPDF from 'jspdf';
 
 const { backCaption } = useBusiness();
+
+function downloadPDF() {
+  const doc = new jsPDF();
+
+  // Установка шрифтів
+  doc.setFont('helvetica');
+
+  // Зміна стилю заголовка
+  doc.setFontSize(22);
+  doc.setFont('helvetica', 'bold');
+  doc.text('Lorem Ipsum', 10, 20);
+
+  // Вставка абзацу з нормальним шрифтом
+  const content =
+    "It is a long established fact that a reader will be distracted by the readable content of a page when looking at its layout. The point of using Lorem Ipsum is that it has a more-or-less normal distribution of letters, as opposed to using 'Content here, content here', making it look like readable English. Many desktop publishing packages and web page editors now use Lorem Ipsum as their default model text, and a search for 'lorem ipsum' will uncover many web sites still in their infancy. Various versions have evolved over the years, sometimes by accident, sometimes on purpose (injected humour and the like).";
+
+  const splitContent = doc.splitTextToSize(content, 180);
+
+  // Зміна стилю абзацу
+  doc.setFontSize(14);
+  doc.setFont('helvetica', 'normal');
+  doc.text(splitContent, 10, 40);
+
+  // Завантаження PDF
+  doc.save('LoremIpsum.pdf');
+}
 </script>
 
 <template>
@@ -17,6 +44,10 @@ const { backCaption } = useBusiness();
         :variant="'default'"
       >
         {{ backCaption }}
+      </ElButton>
+
+      <ElButton :button-action="() => downloadPDF()" :variant="'default'">
+        download
       </ElButton>
     </div>
   </StepPanel>

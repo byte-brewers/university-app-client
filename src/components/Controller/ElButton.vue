@@ -5,6 +5,7 @@ import { computed, defineProps, withDefaults } from 'vue';
 const props = withDefaults(defineProps<IButton>(), {
   buttonAction: () => null,
   variant: 'default',
+  type: 'button',
 });
 
 const variantStyle = computed(() => {
@@ -15,7 +16,8 @@ const variantStyle = computed(() => {
 <template>
   <button
     :class="['el-button', variantStyle]"
-    @click.prevent="props.buttonAction"
+    :type="props.type"
+    @click="props.buttonAction"
   >
     <span class="el-button__text">
       <slot></slot>

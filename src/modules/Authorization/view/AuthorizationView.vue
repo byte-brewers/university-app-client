@@ -1,22 +1,14 @@
 <script setup lang="ts">
-import { EAuthorizationRoutesName } from '@/router/collections';
-import { ref } from 'vue';
 import ElHorizontalLine from '../components/ElHorizontalLine.vue';
 import AppContainer from '@/views/AppContainer.vue';
 import ElInput from '@/components/Controller/ElInput.vue';
 import ElButton from '@/components/Controller/ElButton.vue';
 
-const formData = ref<{
-  email: string;
-  pass: string;
-}>({
-  email: '',
-  pass: '',
-});
+import { EAuthorizationRoutesName } from '@/router/collections';
+import { useAuthorization } from '../composable/useAuthorization';
+import { Form } from 'vee-validate';
 
-const signIn = () => {
-  console.log('Sign In', formData.value);
-};
+const { textButton, formData, fields, schema, submit } = useAuthorization();
 </script>
 
 <template>
@@ -26,38 +18,34 @@ const signIn = () => {
   >
     <template #content>
       <section class="authorization">
-        <section class="authorization__container">
-          <h1 class="authorization__caption">SIGN IN</h1>
-          <section class="authorization__form">
-            <ElInput
-              label="Your email address"
-              placeholder="Your email address"
-              type="text"
-              v-model="formData.email"
-            />
+        <Form
+          ref="form"
+          :validation-schema="schema"
+          :initial-values="formData"
+          @submit="() => submit"
+        >
+          <section class="authorization__container">
+            <h1 class="authorization__caption">{{ textButton }}</h1>
+            <section class="authorization__form">
+              <ElInput v-bind="fields.email" />
+              <ElInput v-bind="fields.pass" />
+              <ElButton variant="primary" type="submit">{{
+                textButton
+              }}</ElButton>
+            </section>
 
-            <ElInput
-              label="Password"
-              placeholder="Password"
-              type="password"
-              v-model="formData.pass"
-            />
+            <h3 class="authorization__footer">
+              If you do not have an account, please
+              <RouterLink
+                :to="{ name: EAuthorizationRoutesName.REGISTRATION }"
+                class="authorization__footer-action"
+                >register</RouterLink
+              >
+            </h3>
 
-            <ElButton :button-action="signIn" variant="primary"
-              >Sign In</ElButton
-            >
+            <ElHorizontalLine />
           </section>
-
-          <h3 class="authorization__footer">
-            If you do not have an account, please
-            <RouterLink
-              :to="{ name: EAuthorizationRoutesName.REGISTRATION }"
-              class="authorization__footer-action"
-              >register</RouterLink
-            >
-          </h3>
-          <ElHorizontalLine />
-        </section>
+        </Form>
       </section>
     </template>
   </AppContainer>
