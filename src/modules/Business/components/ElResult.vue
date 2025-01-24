@@ -1,24 +1,21 @@
 <script setup lang="ts">
 import ElButton from '@/components/Controller/ElButton.vue';
+import ElLoader from '@/components/ElLoader.vue';
 import StepPanel from 'primevue/steppanel';
 import Fieldset from 'primevue/fieldset';
 import Panel from 'primevue/panel';
 import { useBusiness } from '../composable/useBusiness';
 import { useBusinessStore } from '@/stores/business';
-import { computed, onMounted, ref } from 'vue';
+import { computed, ref } from 'vue';
 
 const { setStepValueHandler } = useBusiness();
 const businessStore = useBusinessStore();
 
 const backCaption = ref<string>('Back');
 
-const getBusinessPlan = computed(() => {
-  return businessStore.openAiData?.business_plan || [];
-});
-
-const getOtherPlan = computed(() => {
+const getBusinessOtherPlan = computed(() => {
   return businessStore.openAiData?.others
-    ? Object.keys(businessStore.openAiData?.others).map((key: string) => {
+    ? Object.keys(businessStore.openAiData?.others).map((key) => {
         return {
           title: businessStore.openAiData?.others[key].title,
           text: businessStore.openAiData?.others[key].text,
@@ -27,9 +24,8 @@ const getOtherPlan = computed(() => {
     : [];
 });
 
-onMounted(() => {
-  console.log(getBusinessPlan.value);
-  console.log(getOtherPlan.value);
+const getBusinessmainPlan = computed(() => {
+  return businessStore.openAiData?.business_plan || [];
 });
 </script>
 
@@ -37,36 +33,39 @@ onMounted(() => {
   <StepPanel v-slot="{ activateCallback }" value="3">
     <div class="stepper__wrapper">
       <div class="stepper__content">
-        <div class="stepper__answers">
-          <Fieldset
-            v-for="(item, index) in getBusinessPlan"
-            :key="item.step"
-            :legend="`Step ${item.step}. ${item.title}`"
-            :class="
-              index === getBusinessPlan.length - 1
-                ? 'stepper__answers-single'
-                : 'stepper__answers-double'
-            "
-          >
-            <div class="stepper__answers-content">
-              <b>1:</b> {{ item.what_i_have_to_do }} <b>2:</b>
-              {{ item.where_to_start }}
-            </div>
-          </Fieldset>
-        </div>
-        <div class="stepper__others">
-          <masonry-wall
-            :items="getOtherPlan"
-            :column-width="250"
-            :ssr-columns="1"
-            :gap="16"
-          >
-            <template #default="{ item }">
-              <Panel :header="item.title">
-                <div>{{ item.text }}</div>
-              </Panel>
-            </template>
-          </masonry-wall>
+        <ElLoader v-if="businessStore.isLoaded" />
+        <div class="grid gap-4" v-else>
+          <div class="stepper__answers">
+            <Fieldset
+              v-for="(item, index) in getBusinessmainPlan"
+              :key="item.step"
+              :legend="`Step ${item.step}. ${item.title}`"
+              :class="
+                index === getBusinessmainPlan.length - 1
+                  ? 'stepper__answers-single'
+                  : 'stepper__answers-double'
+              "
+            >
+              <div class="stepper__answers-content">
+                <b>1:</b> {{ item.what_i_have_to_do }} <b>2:</b>
+                {{ item.where_to_start }}
+              </div>
+            </Fieldset>
+          </div>
+          <div class="stepper__others">
+            <masonry-wall
+              :items="getBusinessOtherPlan"
+              :column-width="250"
+              :ssr-columns="1"
+              :gap="16"
+            >
+              <template #default="{ item }">
+                <Panel :header="item.title">
+                  <div>{{ item.text }}</div>
+                </Panel>
+              </template>
+            </masonry-wall>
+          </div>
         </div>
       </div>
     </div>
@@ -89,9 +88,9 @@ onMounted(() => {
 
   &__content {
     @apply border-2 border-dashed rounded border-[#e2e8f0];
-    @apply flex flex-col gap-4;
+    @apply flex flex-col gap-4 justify-center;
     @apply bg-[#f8fafc] p-4;
-    @apply min-h-[38.8rem];
+    @apply min-h-[38.8rem] h-full;
     @apply font-medium;
   }
 

@@ -12,6 +12,7 @@ export const useBusinessStore = defineStore(
   () => {
     const { generatePrompt } = usePrompt();
     const openAiData = ref<IOpenAiData>();
+    const isLoaded = ref(false);
 
     const fetchOpenAi = async (value: IFormData) => {
       const systemPrompt =
@@ -24,6 +25,8 @@ export const useBusinessStore = defineStore(
         apiKey: OPENAI_API_KEY,
         dangerouslyAllowBrowser: true,
       });
+
+      isLoaded.value = true;
 
       const response = await openai.chat.completions.create({
         response_format: { type: 'json_object' },
@@ -41,6 +44,8 @@ export const useBusinessStore = defineStore(
         ],
       });
 
+      isLoaded.value = false;
+
       const content = response.choices[0].message.content;
 
       if (content) {
@@ -52,6 +57,7 @@ export const useBusinessStore = defineStore(
     return {
       fetchOpenAi,
       openAiData,
+      isLoaded,
     };
   },
   {
