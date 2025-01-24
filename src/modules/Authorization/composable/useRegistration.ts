@@ -1,16 +1,10 @@
+import type { TRegFormData } from '../models/TFormData';
+
 import { object, string } from 'yup';
 import { ref } from 'vue';
 
 export function useRegistration() {
-  const textButton = ref<string | null>('SIGN UP');
-
-  type FormData = {
-    email: string;
-    pass1: string;
-    pass2: string;
-  };
-
-  const formData = ref<FormData>({
+  const formData = ref<TRegFormData>({
     email: '',
     pass1: '',
     pass2: '',
@@ -40,15 +34,14 @@ export function useRegistration() {
     pass2: string().required('Pass is required'),
   });
 
-  function submit(value: FormData) {
+  const fetchOpenAi = (value: TRegFormData) => {
     console.log('Registration:', value);
-  }
+  };
 
   return {
-    textButton,
     formData,
     fields,
     schema,
-    submit,
+    fetchOpenAi,
   };
 }

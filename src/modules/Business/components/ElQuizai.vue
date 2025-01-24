@@ -1,14 +1,36 @@
 <script setup lang="ts">
+import type { TFormData } from '../models/TFormData';
+
 import ElButton from '@/components/Controller/ElButton.vue';
 import ElInput from '@/components/Controller/ElInput.vue';
 import ElBanner from '@/components/Media/ElBanner.vue';
 import StepPanel from 'primevue/steppanel';
+
 import { QUIZ_BANNER_ITEM } from '@/utils/mock/banner-items';
 import { useBusiness } from '../composable/useBusiness';
-import { Form } from 'vee-validate';
+import { Form, useForm } from 'vee-validate';
+import { ref } from 'vue';
 
-const { nextCaption, backCaption, formData, fields, schema, submit } =
-  useBusiness();
+const { formData, fields, schema, fetchOpenAi } = useBusiness();
+const { validate } = useForm();
+
+const nextCaption = ref<string | null>('Next');
+const backCaption = ref<string | null>('Back');
+
+const validation = async ({
+  activateCallback,
+  value,
+}: {
+  activateCallback: (value: string) => void;
+  value: TFormData;
+}) => {
+  const isValid = await validate();
+
+  if (isValid) {
+    // activateCallback('3');
+    fetchOpenAi(value);
+  }
+};
 </script>
 
 <template>
@@ -17,7 +39,7 @@ const { nextCaption, backCaption, formData, fields, schema, submit } =
       ref="form"
       :validation-schema="schema"
       :initial-values="formData"
-      @submit="() => submit"
+      @submit="(value: any) => validation({ activateCallback, value })"
     >
       <div class="stepper">
         <div class="stepper__content">

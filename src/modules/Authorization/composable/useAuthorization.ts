@@ -1,15 +1,10 @@
+import type { TAuthFormData } from '../models/TFormData';
+
 import { object, string } from 'yup';
 import { ref } from 'vue';
 
 export function useAuthorization() {
-  const textButton = ref<string | null>('SIGN IN');
-
-  type FormData = {
-    email: string;
-    pass: string;
-  };
-
-  const formData = ref<FormData>({
+  const formData = ref<TAuthFormData>({
     email: '',
     pass: '',
   });
@@ -32,15 +27,14 @@ export function useAuthorization() {
     pass: string().required('Pass is required'),
   });
 
-  function submit(value: FormData) {
+  const fetchOpenAi = (value: TAuthFormData) => {
     console.log('Authorization:', value);
-  }
+  };
 
   return {
-    textButton,
     formData,
     fields,
     schema,
-    submit,
+    fetchOpenAi,
   };
 }

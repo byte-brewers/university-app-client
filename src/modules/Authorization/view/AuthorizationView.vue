@@ -1,4 +1,6 @@
 <script setup lang="ts">
+import type { TAuthFormData } from '../models/TFormData';
+
 import ElHorizontalLine from '../components/ElHorizontalLine.vue';
 import AppContainer from '@/views/AppContainer.vue';
 import ElInput from '@/components/Controller/ElInput.vue';
@@ -6,9 +8,20 @@ import ElButton from '@/components/Controller/ElButton.vue';
 
 import { EAuthorizationRoutesName } from '@/router/collections';
 import { useAuthorization } from '../composable/useAuthorization';
-import { Form } from 'vee-validate';
+import { Form, useForm } from 'vee-validate';
+import { ref } from 'vue';
 
-const { textButton, formData, fields, schema, submit } = useAuthorization();
+const { formData, fields, schema, fetchOpenAi } = useAuthorization();
+const { validate } = useForm();
+
+const textHeader = ref<string | null>('SIGN IN');
+const textButton = ref<string | null>('SIGN IN');
+
+const validation = async (value: TAuthFormData) => {
+  const isValid = await validate();
+
+  if (isValid) fetchOpenAi(value);
+};
 </script>
 
 <template>
@@ -22,10 +35,10 @@ const { textButton, formData, fields, schema, submit } = useAuthorization();
           ref="form"
           :validation-schema="schema"
           :initial-values="formData"
-          @submit="() => submit"
+          @submit="(value: any) => validation(value)"
         >
           <section class="authorization__container">
-            <h1 class="authorization__caption">{{ textButton }}</h1>
+            <h1 class="authorization__caption">{{ textHeader }}</h1>
             <section class="authorization__form">
               <ElInput v-bind="fields.email" />
               <ElInput v-bind="fields.pass" />

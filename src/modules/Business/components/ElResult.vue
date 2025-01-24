@@ -1,10 +1,10 @@
 <script setup lang="ts">
-import { useBusiness } from '../composable/useBusiness';
 import ElButton from '@/components/Controller/ElButton.vue';
 import StepPanel from 'primevue/steppanel';
 import jsPDF from 'jspdf';
+import { ref } from 'vue';
 
-const { backCaption } = useBusiness();
+const backCaption = ref<string | null>('Back');
 
 function downloadPDF() {
   const doc = new jsPDF();

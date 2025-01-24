@@ -3,9 +3,9 @@ import ElButton from '@/components/Controller/ElButton.vue';
 import ElBanner from '@/components/Media/ElBanner.vue';
 import StepPanel from 'primevue/steppanel';
 import { INTRODUCTION_BANNER_ITEM } from '@/utils/mock/banner-items';
-import { useBusiness } from '../composable/useBusiness';
+import { ref } from 'vue';
 
-const { getStartedCaption } = useBusiness();
+const getStartedCaption = ref<string | null>('GET STARTED QUIZ');
 </script>
 
 <template>

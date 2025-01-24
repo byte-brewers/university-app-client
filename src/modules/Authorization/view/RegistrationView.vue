@@ -1,4 +1,6 @@
 <script setup lang="ts">
+import type { TRegFormData } from '../models/TFormData';
+
 import ElHorizontalLine from '../components/ElHorizontalLine.vue';
 import AppContainer from '@/views/AppContainer.vue';
 import ElInput from '@/components/Controller/ElInput.vue';
@@ -6,9 +8,20 @@ import ElButton from '@/components/Controller/ElButton.vue';
 
 import { EAuthorizationRoutesName } from '@/router/collections';
 import { useRegistration } from '../composable/useRegistration';
-import { Form } from 'vee-validate';
+import { Form, useForm } from 'vee-validate';
+import { ref } from 'vue';
 
-const { textButton, formData, fields, schema, submit } = useRegistration();
+const { formData, fields, schema, fetchOpenAi } = useRegistration();
+const { validate } = useForm();
+
+const textHeader = ref<string | null>('SIGN UP');
+const textButton = ref<string | null>('SIGN UP');
+
+const validation = async (value: TRegFormData) => {
+  const isValid = await validate();
+
+  if (isValid) fetchOpenAi(value);
+};
 </script>
 
 <template>
@@ -22,10 +35,10 @@ const { textButton, formData, fields, schema, submit } = useRegistration();
           ref="form"
           :validation-schema="schema"
           :initial-values="formData"
-          @submit="() => submit"
+          @submit="(value: any) => validation(value)"
         >
           <section class="registration__container">
-            <h1 class="registration__caption">{{ textButton }}</h1>
+            <h1 class="registration__caption">{{ textHeader }}</h1>
             <section class="registration__form">
               <ElInput v-bind="fields.email" />
               <ElInput v-bind="fields.pass1" />
