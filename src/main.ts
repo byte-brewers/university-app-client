@@ -1,4 +1,5 @@
 import piniaPluginPersistedstate from 'pinia-plugin-persistedstate';
+import MasonryWall from '@yeger/vue-masonry-wall';
 
 import { createPinia } from 'pinia';
 import { createApp } from 'vue';
@@ -16,6 +17,7 @@ vue.use(createPinia().use(piniaPluginPersistedstate));
 vue.use(PrimeVue, {
   theme: { preset: themes },
 });
+vue.use(MasonryWall);
 vue.use(router);
 
 const selector = '#app';

@@ -1,10 +1,10 @@
-import type { TRegFormData } from '../models/TFormData';
+import type { IRegFormData } from '../models/IFormData';
 
 import { object, string } from 'yup';
 import { ref } from 'vue';
 
 export function useRegistration() {
-  const formData = ref<TRegFormData>({
+  const formData = ref<IRegFormData>({
     email: '',
     pass1: '',
     pass2: '',
@@ -34,7 +34,7 @@ export function useRegistration() {
     pass2: string().required('Pass is required'),
   });
 
-  const fetchOpenAi = (value: TRegFormData) => {
+  const fetchOpenAi = (value: IRegFormData) => {
     console.log('Registration:', value);
   };
 

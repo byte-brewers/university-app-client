@@ -2,6 +2,7 @@
 import ElButton from '@/components/Controller/ElButton.vue';
 import StepPanel from 'primevue/steppanel';
 import Fieldset from 'primevue/fieldset';
+import Panel from 'primevue/panel';
 import { useBusiness } from '../composable/useBusiness';
 import { useBusinessStore } from '@/stores/business';
 import { computed, onMounted, ref } from 'vue';
@@ -12,11 +13,23 @@ const businessStore = useBusinessStore();
 const backCaption = ref<string>('Back');
 
 const getBusinessPlan = computed(() => {
-  return businessStore.openAiData?.business_plan;
+  return businessStore.openAiData?.business_plan || [];
+});
+
+const getOtherPlan = computed(() => {
+  return businessStore.openAiData?.others
+    ? Object.keys(businessStore.openAiData?.others).map((key: string) => {
+        return {
+          title: businessStore.openAiData?.others[key].title,
+          text: businessStore.openAiData?.others[key].text,
+        };
+      })
+    : [];
 });
 
 onMounted(() => {
   console.log(getBusinessPlan.value);
+  console.log(getOtherPlan.value);
 });
 </script>
 
@@ -35,8 +48,25 @@ onMounted(() => {
                 : 'stepper__answers-double'
             "
           >
-            <p>1: {{ item.what_i_have_to_do }} 2: {{ item.where_to_start }}</p>
+            <div class="stepper__answers-content">
+              <b>1:</b> {{ item.what_i_have_to_do }} <b>2:</b>
+              {{ item.where_to_start }}
+            </div>
           </Fieldset>
+        </div>
+        <div class="stepper__others">
+          <masonry-wall
+            :items="getOtherPlan"
+            :column-width="250"
+            :ssr-columns="1"
+            :gap="16"
+          >
+            <template #default="{ item }">
+              <Panel :header="item.title">
+                <div>{{ item.text }}</div>
+              </Panel>
+            </template>
+          </masonry-wall>
         </div>
       </div>
     </div>
@@ -59,7 +89,6 @@ onMounted(() => {
 
   &__content {
     @apply border-2 border-dashed rounded border-[#e2e8f0];
-    // @apply grid grid-cols-2 gap-4;
     @apply flex flex-col gap-4;
     @apply bg-[#f8fafc] p-4;
     @apply min-h-[38.8rem];
@@ -67,16 +96,24 @@ onMounted(() => {
   }
 
   &__answers {
-    @apply grid grid-cols-2 grid-rows-4 gap-4;
+    @apply grid grid-cols-2 gap-4;
     @apply text-justify;
     @apply w-full;
 
+    &-content {
+      @apply text-sm text-gray-600;
+
+      b {
+        @apply text-base;
+      }
+    }
+
     &-double {
-      @apply col-span-1 row-span-1;
+      @apply col-span-1;
     }
 
     &-single {
-      @apply col-span-2 row-span-1;
+      @apply col-span-2;
       @apply h-max;
     }
   }
@@ -87,6 +124,27 @@ onMounted(() => {
     &-start {
       @apply justify-start;
     }
+  }
+}
+
+:deep(.p-fieldset) {
+  @apply bg-white p-4 border-2;
+
+  .p-fieldset-legend {
+    @apply shadow-lg;
+
+    .p-fieldset-legend-label {
+      @apply text-base text-gray-600;
+    }
+  }
+}
+
+:deep(.p-panel) {
+  @apply bg-white p-0 border-2;
+
+  .p-panel-content {
+    @apply text-sm text-gray-600;
+    @apply text-justify;
   }
 }
 </style>

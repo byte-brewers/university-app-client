@@ -1,7 +1,7 @@
-import type { TFormData } from '../models/TFormData';
+import type { IFormData } from '../models/IFormData';
 
 export function usePrompt() {
-  const generatePrompt = (data: TFormData) => {
+  const generatePrompt = (data: IFormData) => {
     console.log('data', data);
 
     return `
@@ -19,40 +19,117 @@ export function usePrompt() {
       7. What are your main goals for your first year? My answer is: ${data.mainGoals}.
 
 
-      Your answer should be formatted as follows.
+      Your answer should be formatted as follows. The answer should be big and understandable to a person.
 
       business_plan: [
         {
           "step": 1, // Question number.
           "title": "", // Question title.
-          "what_i_have_to_do": "" // What i have to do? There should be 50-100 words.
-          "where_to_start": "" // Where to start? There should be 100-150 words.
+          "what_i_have_to_do": "" // What i have to do? Gime me long answer!
+          "where_to_start": "" // Where to start? Gime me short answer!
         },
         {
-          "step": 1, // Question number.
+          "step": 2, // Question number.
           "title": "", // Question number.
-          "what_i_have_to_do": "" // What i have to do? There should be 50-100 words.
-          "where_to_start": "" // Where to start? There should be 100-150 words.
+          "what_i_have_to_do": "" // What i have to do? Gime me long answer!
+          "where_to_start": "" // Where to start? Gime me short answer!
         },
-        ...
+        {
+          "step": 3, // Question number.
+          "title": "", // Question number.
+          "what_i_have_to_do": "" // What i have to do? Gime me long answer!
+          "where_to_start": "" // Where to start? Gime me short answer!
+        },
+        {
+          "step": 4, // Question number.
+          "title": "", // Question number.
+          "what_i_have_to_do": "" // What i have to do? Gime me long answer!
+          "where_to_start": "" // Where to start? Gime me short answer!
+        },
+        {
+          "step": 5, // Question number.
+          "title": "", // Question number.
+          "what_i_have_to_do": "" // What i have to do? Gime me long answer!
+          "where_to_start": "" // Where to start? Gime me short answer!
+        },
+        {
+          "step": 6, // Question number.
+          "title": "", // Question number.
+          "what_i_have_to_do": "" // What i have to do? Gime me long answer!
+          "where_to_start": "" // Where to start? Gime me short answer!
+        },
+        {
+          "step": 7, // Question number.
+          "title": "", // Question number.
+          "what_i_have_to_do": "" // What i have to do? Gime me long answer!
+          "where_to_start": "" // Where to start? Gime me short answer!
+        },
       ],
       others: { // Additional information will be available here.
-        sustainability: "" // How can I ensure my business is sustainable? There should be 50-100 words.
-        calculations: "" // Do I have enough money to start a business? I have ${data.startUpCapital}$. There should be 50-100 words.
-        technology: "" // What technology do I need? There should be 50-100 words.
-        marketing: "" // What marketing strategies should I use? There should be 50-100 words.
-        financing: "" // What financing options are available? There should be 50-100 words.
-        community: "" // How can I engage with the community? There should be 50-100 words.
-        logistics: "" // How should I manage logistics? There should be 50-100 words.
-        training: "" // What training do I need? There should be 50-100 words.
-        branding: "" // What should my branding strategy be? There should be 50-100 words.
-        channels: "" // What sales channels should I use? There should be 50-100 words.
-        growth: "" // How can I grow my business? There should be 50-100 words.
-        plans: "" // Give me a plan for the next 5 years. There should be 50-100 words.
-        scale: "" // How can I scale my business? There should be 50-100 words.
-        risks: "" // What are the risks? There should be 50-100 words.
-        backs: "" // When will the business pay off? There should be 50-100 words.
-        hr: "" // What are my human resources needs? There should be 50-100 words.
+        sustainability: { // How can I ensure my business is sustainable? Gime me short answer!
+          title: "",
+          text: ""
+        }
+        calculations: { // Do I have enough money to start a business? I have ${data.startUpCapital}$. Gime me short answer!
+          title: "",
+          text: "" 
+        }
+        technology: { // What technology do I need? Gime me short answer!
+          title: "",
+          text: "" 
+        }
+        marketing: { // What marketing strategies should I use? Reach a monthly profit of $1000
+          title: "",
+          text: ""
+        }
+        financing: { // What financing options are available? Gime me short answer!
+          title: "",
+          text: "" 
+        }
+        community: { // How can I engage with the community? Gime me short answer!
+          title: "",
+          text: ""
+        }
+        logistics: { // How should I manage logistics? Gime me short answer!
+          title: "",
+          text: "" 
+        }
+        training: { // What training do I need? Gime me short answer!
+          title: "",
+          text: ""
+        }
+        branding: { // What should my branding strategy be? Gime me short answer!
+          title: "",
+          text: "" 
+        }
+        channels: { // What sales channels should I use? Gime me short answer!
+          title: "",
+          text: ""
+        }
+        growth: { // How can I grow my business? Gime me short answer!
+          title: "",
+          text: "" 
+        }
+        plans: { // Give me a plan for the next 5 years. Gime me short answer!
+          title: "",
+          text: ""
+        }
+        scale: { // How can I scale my business? Gime me short answer!
+          title: "",
+          text: "" 
+        }
+        risks: { // What are the risks? Gime me short answer!
+          title: "",
+          text: ""
+        }
+        backs: { // When will the business pay off? Gime me short answer!
+          title: "",
+          text: "" 
+        }
+        hr: { // What are my human resources needs? Gime me short answer!
+          title: "",
+          text: ""
+        }
       }
     `;
   };

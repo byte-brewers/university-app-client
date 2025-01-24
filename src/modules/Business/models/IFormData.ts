@@ -1,4 +1,4 @@
-export type TFormData = {
+export interface IFormData {
   productOrService: string;
   targetAudience: string;
   regionOrCity: string;
@@ -6,4 +6,4 @@ export type TFormData = {
   salesChannels: string;
   keyCosts: string;
   mainGoals: string;
-};
+}

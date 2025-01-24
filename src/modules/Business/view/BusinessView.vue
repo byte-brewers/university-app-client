@@ -13,7 +13,8 @@ import { computed } from 'vue';
 const { stepList, getStorageStepValue } = useBusiness();
 
 const currentStep = computed(() => {
-  return getStorageStepValue();
+  // return getStorageStepValue();
+  return '3';
 });
 </script>
 
@@ -47,6 +48,7 @@ const currentStep = computed(() => {
 
 <style scoped lang="scss">
 .business {
+  @apply max-w-[1440px] w-full mx-auto;
   @apply flex flex-col gap-0 px-4;
 
   &__header {

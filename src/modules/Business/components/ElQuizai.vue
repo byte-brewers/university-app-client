@@ -1,5 +1,5 @@
 <script setup lang="ts">
-import type { TFormData } from '../models/TFormData';
+import type { IFormData } from '../models/IFormData';
 
 import ElButton from '@/components/Controller/ElButton.vue';
 import ElInput from '@/components/Controller/ElInput.vue';
@@ -24,7 +24,7 @@ const validation = async ({
   value,
 }: {
   activateCallback: (value: string) => void;
-  value: TFormData;
+  value: IFormData;
 }) => {
   const isValid = await validate();
 

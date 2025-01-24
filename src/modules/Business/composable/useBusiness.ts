@@ -1,4 +1,4 @@
-import type { TFormData } from '../models/TFormData';
+import type { IFormData } from '../models/IFormData';
 import { object, string } from 'yup';
 import { ref } from 'vue';
 
@@ -57,7 +57,7 @@ export function useBusiness() {
     { id: 3, value: '3', label: 'Result' },
   ]);
 
-  const formData = ref<TFormData>({
+  const formData = ref<IFormData>({
     productOrService: '',
     targetAudience: '',
     regionOrCity: '',

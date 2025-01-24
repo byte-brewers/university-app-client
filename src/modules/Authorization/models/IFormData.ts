@@ -1,10 +1,10 @@
-export type TAuthFormData = {
+export interface IAuthFormData {
   email: string;
   pass: string;
-};
+}
 
-export type TRegFormData = {
+export interface IRegFormData {
   email: string;
   pass1: string;
   pass2: string;
-};
+}

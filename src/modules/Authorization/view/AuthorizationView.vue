@@ -1,5 +1,5 @@
 <script setup lang="ts">
-import type { TAuthFormData } from '../models/TFormData';
+import type { IAuthFormData } from '../models/IFormData';
 
 import ElHorizontalLine from '../components/ElHorizontalLine.vue';
 import AppContainer from '@/views/AppContainer.vue';
@@ -17,7 +17,7 @@ const { validate } = useForm();
 const textHeader = ref<string | null>('SIGN IN');
 const textButton = ref<string | null>('SIGN IN');
 
-const validation = async (value: TAuthFormData) => {
+const validation = async (value: IAuthFormData) => {
   const isValid = await validate();
 
   if (isValid) fetchOpenAi(value);

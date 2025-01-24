@@ -1,4 +1,5 @@
-import type { TFormData } from '@/modules/Business/models/TFormData';
+import type { IOpenAiData } from '@/models/Bussines/IOpenAiData';
+import type { IFormData } from '@/modules/Business/models/IFormData';
 import { usePrompt } from '@/modules/Business/composable/usePrompt';
 import { OPENAI_API_KEY } from '@/utils/opeaikey';
 import { defineStore } from 'pinia';
@@ -10,9 +11,9 @@ export const useBusinessStore = defineStore(
   'businessStore',
   () => {
     const { generatePrompt } = usePrompt();
-    const openAiData = ref(null);
+    const openAiData = ref<IOpenAiData>();
 
-    const fetchOpenAi = async (value: TFormData) => {
+    const fetchOpenAi = async (value: IFormData) => {
       const systemPrompt =
         'You are a helpful assistant designed to output JSON.';
       const userPrompt = generatePrompt(value);

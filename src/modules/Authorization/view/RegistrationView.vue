@@ -1,5 +1,5 @@
 <script setup lang="ts">
-import type { TRegFormData } from '../models/TFormData';
+import type { IRegFormData } from '../models/IFormData';
 
 import ElHorizontalLine from '../components/ElHorizontalLine.vue';
 import AppContainer from '@/views/AppContainer.vue';
@@ -17,7 +17,7 @@ const { validate } = useForm();
 const textHeader = ref<string | null>('SIGN UP');
 const textButton = ref<string | null>('SIGN UP');
 
-const validation = async (value: TRegFormData) => {
+const validation = async (value: IRegFormData) => {
   const isValid = await validate();
 
   if (isValid) fetchOpenAi(value);
