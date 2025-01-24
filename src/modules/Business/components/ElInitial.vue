@@ -3,9 +3,12 @@ import ElButton from '@/components/Controller/ElButton.vue';
 import ElBanner from '@/components/Media/ElBanner.vue';
 import StepPanel from 'primevue/steppanel';
 import { INTRODUCTION_BANNER_ITEM } from '@/utils/mock/banner-items';
+import { useBusiness } from '../composable/useBusiness';
 import { ref } from 'vue';
 
-const getStartedCaption = ref<string | null>('GET STARTED QUIZ');
+const { setStepValueHandler } = useBusiness();
+
+const captionText = ref<string>('GET STARTED QUIZ');
 </script>
 
 <template>
@@ -15,10 +18,12 @@ const getStartedCaption = ref<string | null>('GET STARTED QUIZ');
         <ElBanner v-bind="INTRODUCTION_BANNER_ITEM">
           <template #button>
             <ElButton
-              :button-action="() => activateCallback('2')"
+              :button-action="
+                () => setStepValueHandler({ activateCallback, value: '2' })
+              "
               :variant="'default'"
             >
-              {{ getStartedCaption }}
+              {{ captionText }}
             </ElButton>
           </template>
         </ElBanner>

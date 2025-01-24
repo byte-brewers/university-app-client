@@ -1,22 +1,16 @@
 import type { TFormData } from '../models/TFormData';
-
-import { usePrompt } from './usePrompt';
-
-import { OPENAI_API_KEY } from '@/utils/opeaikey';
 import { object, string } from 'yup';
 import { ref } from 'vue';
 
-import OpenAI from 'openai';
-
 export function useBusiness() {
-  const formData = ref<TFormData>({
-    productOrService: '',
-    targetAudience: '',
-    regionOrCity: '',
-    startUpCapital: '',
-    salesChannels: '',
-    keyCosts: '',
-    mainGoals: '',
+  const schema = object().shape({
+    productOrService: string().required('Product or service is required'),
+    targetAudience: string().required('Target audience is required'),
+    regionOrCity: string().required('Region or city is required'),
+    startUpCapital: string().required('Start-up capital is required'),
+    salesChannels: string().required('Sales channels are required'),
+    keyCosts: string().required('Key costs are required'),
+    mainGoals: string().required('Main goals are required'),
   });
 
   const fields = {
@@ -57,56 +51,41 @@ export function useBusiness() {
     },
   };
 
-  const schema = object().shape({
-    productOrService: string().required('Product or service is required'),
-    targetAudience: string().required('Target audience is required'),
-    regionOrCity: string().required('Region or city is required'),
-    startUpCapital: string().required('Start-up capital is required'),
-    salesChannels: string().required('Sales channels are required'),
-    keyCosts: string().required('Key costs are required'),
-    mainGoals: string().required('Main goals are required'),
+  const formData = ref<TFormData>({
+    productOrService: '',
+    targetAudience: '',
+    regionOrCity: '',
+    startUpCapital: '',
+    salesChannels: '',
+    keyCosts: '',
+    mainGoals: '',
   });
 
-  const { generatePrompt } = usePrompt();
+  const setStorageStepValue = (value: string): void => {
+    sessionStorage.setItem('steps', value);
+  };
 
-  const fetchOpenAi = async (value: TFormData) => {
-    const systemPrompt = 'You are a helpful assistant designed to output JSON.';
-    const userPrompt = generatePrompt(value);
+  const getStorageStepValue = (): string => {
+    return sessionStorage.getItem('steps') || '1';
+  };
 
-    const openai = new OpenAI({
-      organization: 'org-gMMLBDt8GYoH6XvDrRNR9dDS',
-      project: 'proj_13bhHRRlUbgQnmsrdOEaVlAH',
-      apiKey: OPENAI_API_KEY,
-      dangerouslyAllowBrowser: true,
-    });
-
-    const response = await openai.chat.completions.create({
-      response_format: { type: 'json_object' },
-      model: 'gpt-4-turbo',
-      store: true,
-      messages: [
-        {
-          content: systemPrompt,
-          role: 'system',
-        },
-        {
-          content: userPrompt,
-          role: 'user',
-        },
-      ],
-    });
-
-    const content = response.choices[0].message.content;
-
-    if (content) {
-      console.log(JSON.parse(content));
-    }
+  const setStepValueHandler = async ({
+    activateCallback,
+    value,
+  }: {
+    activateCallback: (value: string) => void;
+    value: string;
+  }) => {
+    await setStorageStepValue(value);
+    activateCallback(value);
   };
 
   return {
+    setStorageStepValue,
+    getStorageStepValue,
+    setStepValueHandler,
     formData,
-    fields,
     schema,
-    fetchOpenAi,
+    fields,
   };
 }

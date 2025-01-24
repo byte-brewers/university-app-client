@@ -7,21 +7,27 @@ import Step from 'primevue/step';
 import ElInitial from '../components/ElInitial.vue';
 import ElQuizai from '../components/ElQuizai.vue';
 import ElResult from '../components/ElResult.vue';
+import { useBusiness } from '../composable/useBusiness';
+import { computed, ref } from 'vue';
 
-import { ref } from 'vue';
+const { getStorageStepValue } = useBusiness();
 
 const stepList = ref([
   { id: 1, value: '1', label: 'Introduction' },
   { id: 2, value: '2', label: 'Quiz' },
   { id: 3, value: '3', label: 'Result' },
 ]);
+
+const currentStep = computed(() => {
+  return getStorageStepValue();
+});
 </script>
 
 <template>
   <AppContainer>
     <template #content>
       <section class="business">
-        <Stepper value="1" class="business__content">
+        <Stepper :value="currentStep" class="business__content">
           <StepList>
             <Step
               v-for="item in stepList"

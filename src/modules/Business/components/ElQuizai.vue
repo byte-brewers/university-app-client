@@ -8,14 +8,16 @@ import StepPanel from 'primevue/steppanel';
 
 import { QUIZ_BANNER_ITEM } from '@/utils/mock/banner-items';
 import { useBusiness } from '../composable/useBusiness';
+import { useBusinessStore } from '@/stores/business';
 import { Form, useForm } from 'vee-validate';
 import { ref } from 'vue';
 
-const { formData, fields, schema, fetchOpenAi } = useBusiness();
+const { formData, fields, schema, setStepValueHandler } = useBusiness();
+const businessStore = useBusinessStore();
 const { validate } = useForm();
 
-const nextCaption = ref<string | null>('Next');
-const backCaption = ref<string | null>('Back');
+const nextCaption = ref<string>('Next');
+const backCaption = ref<string>('Back');
 
 const validation = async ({
   activateCallback,
@@ -27,8 +29,11 @@ const validation = async ({
   const isValid = await validate();
 
   if (isValid) {
-    // activateCallback('3');
-    fetchOpenAi(value);
+    businessStore.fetchOpenAi(value);
+    setStepValueHandler({
+      activateCallback,
+      value: '3',
+    });
   }
 };
 </script>
@@ -59,7 +64,9 @@ const validation = async ({
       </div>
       <div class="stepper__actions stepper__actions-between">
         <ElButton
-          :button-action="() => activateCallback('1')"
+          :button-action="
+            () => setStepValueHandler({ activateCallback, value: '1' })
+          "
           :variant="'default'"
         >
           {{ backCaption }}

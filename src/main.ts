@@ -1,3 +1,5 @@
+import piniaPluginPersistedstate from 'pinia-plugin-persistedstate';
+
 import { createPinia } from 'pinia';
 import { createApp } from 'vue';
 
@@ -10,7 +12,7 @@ import './main.css';
 
 const vue = createApp(app);
 
-vue.use(createPinia());
+vue.use(createPinia().use(piniaPluginPersistedstate));
 vue.use(PrimeVue, {
   theme: { preset: themes },
 });
