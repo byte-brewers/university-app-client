@@ -26,13 +26,13 @@ export function usePrompt() {
           "step": 1, // Question number.
           "title": "", // Question title.
           "what_i_have_to_do": "" // What i have to do? There should be 50-100 words.
-          "where_to_start": "" // Where to start? There should be 50-100 words.
+          "where_to_start": "" // Where to start? There should be 100-150 words.
         },
         {
           "step": 1, // Question number.
           "title": "", // Question number.
           "what_i_have_to_do": "" // What i have to do? There should be 50-100 words.
-          "where_to_start": "" // Where to start? There should be 50-100 words.
+          "where_to_start": "" // Where to start? There should be 100-150 words.
         },
         ...
       ],

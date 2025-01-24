@@ -8,15 +8,9 @@ import ElInitial from '../components/ElInitial.vue';
 import ElQuizai from '../components/ElQuizai.vue';
 import ElResult from '../components/ElResult.vue';
 import { useBusiness } from '../composable/useBusiness';
-import { computed, ref } from 'vue';
+import { computed } from 'vue';
 
-const { getStorageStepValue } = useBusiness();
-
-const stepList = ref([
-  { id: 1, value: '1', label: 'Introduction' },
-  { id: 2, value: '2', label: 'Quiz' },
-  { id: 3, value: '3', label: 'Result' },
-]);
+const { stepList, getStorageStepValue } = useBusiness();
 
 const currentStep = computed(() => {
   return getStorageStepValue();
