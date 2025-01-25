@@ -115,7 +115,7 @@ const variantStyle = computed(() => {
   }
 
   &--full {
-    @apply h-dvh w-full;
+    @apply h-[calc(100vh-6rem)] w-full;
   }
 }
 </style>

@@ -32,7 +32,7 @@ import ElBenefits from '../components/ElBenefits.vue';
 <style scoped lang="scss">
 .home {
   @apply grid grid-cols-1 gap-4;
-  @apply h-full w-full pb-4;
+  @apply h-full w-full pb-14;
 
   &__element {
     @apply px-4;

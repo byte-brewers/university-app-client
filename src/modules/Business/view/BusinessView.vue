@@ -49,7 +49,7 @@ const currentStep = computed(() => {
 <style scoped lang="scss">
 .business {
   @apply max-w-[1440px] w-full mx-auto;
-  @apply flex flex-col gap-0 px-4;
+  @apply flex flex-col gap-0 px-4 pb-12;
 
   &__header {
     @apply pointer-events-none;

@@ -67,8 +67,9 @@ const validation = async (value: IRegFormData) => {
 
 <style scoped lang="scss">
 .registration {
-  @apply h-full flex flex-col items-center justify-center;
+  @apply flex flex-col items-center justify-center;
   @apply bg-white overflow-hidden;
+  @apply h-[calc(100vh-6rem)];
 
   &__ {
     &container {

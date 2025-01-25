@@ -7,14 +7,9 @@
 html,
 body {
   font-family: 'Ubuntu', sans-serif;
-  @apply h-full overflow-x-auto;
   @apply bg-white;
 }
 
 html {
-  @apply pt-16 pb-10;
-}
-
-#app {
-  @apply h-full;
+  @apply pt-16;
 }
