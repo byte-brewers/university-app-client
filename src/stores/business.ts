@@ -1,6 +1,7 @@
 import type { IOpenAiData } from '@/models/Bussines/IOpenAiData';
 import type { IFormData } from '@/modules/Business/models/IFormData';
 import { usePrompt } from '@/modules/Business/composable/usePrompt';
+import { supabase } from '@/utils/table/supabase';
 import { defineStore } from 'pinia';
 import { ref } from 'vue';
 
@@ -9,13 +10,13 @@ import OpenAI from 'openai';
 export const useBusinessStore = defineStore(
   'businessStore',
   () => {
-    const OPENAI_API_KEY =
-      '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';
     const { generatePrompt } = usePrompt();
     const openAiData = ref<IOpenAiData>();
     const isLoaded = ref(false);
 
     const fetchOpenAi = async (value: IFormData) => {
+      const { data } = await supabase.from('client').select().single();
+
       const systemPrompt =
         'You are a helpful assistant designed to output JSON.';
       const userPrompt = generatePrompt(value);
@@ -23,7 +24,7 @@ export const useBusinessStore = defineStore(
       const openai = new OpenAI({
         organization: 'org-gMMLBDt8GYoH6XvDrRNR9dDS',
         project: 'proj_13bhHRRlUbgQnmsrdOEaVlAH',
-        apiKey: OPENAI_API_KEY,
+        apiKey: data.key,
         dangerouslyAllowBrowser: true,
       });
 
