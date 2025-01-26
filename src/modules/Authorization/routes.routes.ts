@@ -2,7 +2,7 @@ import {
   EAuthorizationComponents,
   EAuthorizationRoutesName,
   EAuthorizationRoutesPath,
-} from './routes/EAuthorizationRoutes'
+} from './routes/EAuthorizationRoutes';
 
 export default {
   redirect: { name: EAuthorizationRoutesName.AUTHORIZATION },
@@ -21,4 +21,4 @@ export default {
       path: EAuthorizationRoutesPath.REGISTRATION,
     },
   ],
-}
+};

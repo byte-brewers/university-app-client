@@ -1,14 +1,24 @@
-import { createPinia } from 'pinia'
-import { createApp } from 'vue'
+import piniaPluginPersistedstate from 'pinia-plugin-persistedstate';
+import MasonryWall from '@yeger/vue-masonry-wall';
 
-import router from './router'
-import app from './App.vue'
-import './main.css'
+import { createPinia } from 'pinia';
+import { createApp } from 'vue';
 
-const vue = createApp(app)
+import { themes } from '@/utils/config/prime-vue';
+import PrimeVue from 'primevue/config';
 
-vue.use(createPinia())
-vue.use(router)
+import router from './router';
+import app from './App.vue';
+import './main.css';
 
-const selector = '#app'
-vue.mount(selector)
+const vue = createApp(app);
+
+vue.use(createPinia().use(piniaPluginPersistedstate));
+vue.use(PrimeVue, {
+  theme: { preset: themes },
+});
+vue.use(MasonryWall);
+vue.use(router);
+
+const selector = '#app';
+vue.mount(selector);
