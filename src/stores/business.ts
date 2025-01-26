@@ -1,7 +1,6 @@
 import type { IOpenAiData } from '@/models/Bussines/IOpenAiData';
 import type { IFormData } from '@/modules/Business/models/IFormData';
 import { usePrompt } from '@/modules/Business/composable/usePrompt';
-import { OPENAI_API_KEY } from '@/utils/opeaikey';
 import { defineStore } from 'pinia';
 import { ref } from 'vue';
 
@@ -10,6 +9,7 @@ import OpenAI from 'openai';
 export const useBusinessStore = defineStore(
   'businessStore',
   () => {
+    const OPENAI_API_KEY = import.meta.env.VITE_OPENAI_API_KEY;
     const { generatePrompt } = usePrompt();
     const openAiData = ref<IOpenAiData>();
     const isLoaded = ref(false);
