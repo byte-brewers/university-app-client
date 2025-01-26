@@ -6,12 +6,12 @@ import Fieldset from 'primevue/fieldset';
 import Panel from 'primevue/panel';
 import { useBusiness } from '../composable/useBusiness';
 import { useBusinessStore } from '@/stores/business';
-import { computed, onUnmounted, ref } from 'vue';
+import { computed, ref } from 'vue';
 
 const { setStepValueHandler } = useBusiness();
 const businessStore = useBusinessStore();
 
-const downloadCaption = ref<string>('DOWNLOAD');
+// const downloadCaption = ref<string>('DOWNLOAD');
 const backCaption = ref<string>('BACK');
 
 const getBusinessOtherPlan = computed(() => {
@@ -27,10 +27,6 @@ const getBusinessOtherPlan = computed(() => {
 
 const getBusinessmainPlan = computed(() => {
   return businessStore.openAiData?.business_plan || [];
-});
-
-onUnmounted(() => {
-  businessStore.resetOpenAiData();
 });
 </script>
 
@@ -83,12 +79,12 @@ onUnmounted(() => {
       >
         {{ backCaption }}
       </ElButton>
-      <ElButton
+      <!-- <ElButton
         :button-action="() => console.log('download')"
         :variant="'primary'"
       >
         {{ downloadCaption }}
-      </ElButton>
+      </ElButton> -->
     </div>
   </StepPanel>
 </template>
@@ -106,7 +102,7 @@ onUnmounted(() => {
   }
 
   &__answers {
-    @apply grid grid-cols-2 gap-4;
+    @apply grid grid-cols-1 lg:grid-cols-2 gap-4;
     @apply text-justify;
     @apply w-full;
 
@@ -119,12 +115,11 @@ onUnmounted(() => {
     }
 
     &-double {
-      @apply col-span-1;
+      @apply lg:col-span-1;
     }
 
     &-single {
-      @apply col-span-2;
-      @apply h-max;
+      @apply lg:col-span-2;
     }
   }
 
