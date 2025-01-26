@@ -26,6 +26,7 @@ export const useBusinessStore = defineStore(
         dangerouslyAllowBrowser: true,
       });
 
+      openAiData.value = undefined;
       isLoaded.value = true;
 
       const response = await openai.chat.completions.create({
@@ -54,7 +55,12 @@ export const useBusinessStore = defineStore(
       }
     };
 
+    const resetOpenAiData = () => {
+      openAiData.value = undefined;
+    };
+
     return {
+      resetOpenAiData,
       fetchOpenAi,
       openAiData,
       isLoaded,

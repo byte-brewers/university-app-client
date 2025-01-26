@@ -6,12 +6,13 @@ import Fieldset from 'primevue/fieldset';
 import Panel from 'primevue/panel';
 import { useBusiness } from '../composable/useBusiness';
 import { useBusinessStore } from '@/stores/business';
-import { computed, ref } from 'vue';
+import { computed, onUnmounted, ref } from 'vue';
 
 const { setStepValueHandler } = useBusiness();
 const businessStore = useBusinessStore();
 
-const backCaption = ref<string>('Back');
+const downloadCaption = ref<string>('DOWNLOAD');
+const backCaption = ref<string>('BACK');
 
 const getBusinessOtherPlan = computed(() => {
   return businessStore.openAiData?.others
@@ -26,6 +27,10 @@ const getBusinessOtherPlan = computed(() => {
 
 const getBusinessmainPlan = computed(() => {
   return businessStore.openAiData?.business_plan || [];
+});
+
+onUnmounted(() => {
+  businessStore.resetOpenAiData();
 });
 </script>
 
@@ -69,7 +74,7 @@ const getBusinessmainPlan = computed(() => {
         </div>
       </div>
     </div>
-    <div class="stepper__actions stepper__actions-start">
+    <div class="stepper__actions stepper__actions-between">
       <ElButton
         :button-action="
           () => setStepValueHandler({ activateCallback, value: '2' })
@@ -77,6 +82,12 @@ const getBusinessmainPlan = computed(() => {
         :variant="'default'"
       >
         {{ backCaption }}
+      </ElButton>
+      <ElButton
+        :button-action="() => console.log('download')"
+        :variant="'primary'"
+      >
+        {{ downloadCaption }}
       </ElButton>
     </div>
   </StepPanel>
@@ -120,8 +131,8 @@ const getBusinessmainPlan = computed(() => {
   &__actions {
     @apply flex pt-6;
 
-    &-start {
-      @apply justify-start;
+    &-between {
+      @apply justify-between;
     }
   }
 }

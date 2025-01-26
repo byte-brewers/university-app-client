@@ -13,8 +13,8 @@ import { computed } from 'vue';
 const { stepList, getStorageStepValue } = useBusiness();
 
 const currentStep = computed(() => {
-  // return getStorageStepValue();
-  return '3';
+  return getStorageStepValue();
+  // return '3';
 });
 </script>
 
