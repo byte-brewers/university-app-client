@@ -95,7 +95,7 @@ const validation = async ({
     }
 
     &-col-2 {
-      @apply grid gap-4 grid-cols-3;
+      @apply grid gap-4 grid-cols-1 lg:grid-cols-2 xl:grid-cols-3;
     }
   }
 

@@ -52,7 +52,7 @@ export function useBusiness() {
   };
 
   const stepList = ref([
-    { id: 1, value: '1', label: 'Introduction' },
+    { id: 1, value: '1', label: 'Start' },
     { id: 2, value: '2', label: 'Quiz' },
     { id: 3, value: '3', label: 'Result' },
   ]);
