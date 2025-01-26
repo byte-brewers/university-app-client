@@ -60,22 +60,22 @@ const variantStyle = computed(() => {
 <style scoped lang="scss">
 .el-banner {
   @apply flex flex-col items-center gap-4 justify-center overflow-hidden;
-  @apply relative;
+  @apply relative px-4;
 
   &__caption {
-    @apply text-7xl text-center font-bold z-10;
+    @apply text-3xl lg:text-7xl text-center font-bold z-10;
     @apply text-black;
   }
 
   &__text {
-    @apply text-3xl text-center font-thin z-10;
+    @apply text-xl lg:text-3xl text-center font-thin z-10;
     @apply text-black;
   }
 
   &__desc {
-    @apply text-xl text-center font-medium z-10;
+    @apply text-base lg:text-xl text-center font-medium z-10;
     @apply text-black;
-    @apply my-10;
+    @apply my-4;
   }
 
   &__button {
