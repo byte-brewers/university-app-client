@@ -17,6 +17,9 @@ importers:
       '@yeger/vue-masonry-wall':
         specifier: ^5.0.17
         version: 5.0.17(vue@3.5.12(typescript@5.5.4))
+      dotenv:
+        specifier: ^16.4.7
+        version: 16.4.7
       jspdf:
         specifier: ^2.5.2
         version: 2.5.2
@@ -35,6 +38,9 @@ importers:
       primevue:
         specifier: ^4.2.5
         version: 4.2.5(vue@3.5.12(typescript@5.5.4))
+      save:
+        specifier: ^2.9.0
+        version: 2.9.0
       vee-validate:
         specifier: ^4.15.0
         version: 4.15.0(vue@3.5.12(typescript@5.5.4))
@@ -1247,6 +1253,9 @@ packages:
     resolution: {integrity: sha512-47qPchRCykZC03FhkYAhrvwU4xDBFIj1QPqaarj6mdM/hgUzfPHcpkHJOn3mJAufFeeAxAzeGsr5X0M4k6fLZQ==}
     engines: {node: '>=12'}
 
+  duplexer@0.1.2:
+    resolution: {integrity: sha512-jtD6YG370ZCIi/9GTaJKQxWTZD045+4R4hTk/x1UyoqadyJ9x9CgSi1RlVDQF8U2sxLLSnFkCaMihqljHIWgMg==}
+
   eastasianwidth@0.2.0:
     resolution: {integrity: sha512-I88TYZWc9XiYHRQ4/3c5rjjfgkjhLyW2luGIheGERbNQ6OY7yTybanSpDXZa8y7VUP9YmDcYa+eyq4ca7iLqWA==}
 
@@ -1377,6 +1386,9 @@ packages:
     resolution: {integrity: sha512-kVscqXk4OCp68SZ0dkgEKVi6/8ij300KBWTJq32P/dYeWTSwK41WyTxalN1eRmA5Z9UU/LX9D7FWSmV9SAYx6g==}
     engines: {node: '>=0.10.0'}
 
+  event-stream@4.0.1:
+    resolution: {integrity: sha512-qACXdu/9VHPBzcyhdOWR5/IahhGMf0roTeZJfzz077GwylcDd90yOHLouhmv7GJ5XzPi6ekaQWd8AvPP2nOvpA==}
+
   event-target-shim@5.0.1:
     resolution: {integrity: sha512-i/2XbnSz/uxRCU6+NdVJgKWDTM427+MqYbkQzD321DuCQJUqOuJKIA0IM2+W2xtYHdKOmZ4dR6fExsd4SXL+WQ==}
     engines: {node: '>=6'}
@@ -1450,6 +1462,9 @@ packages:
 
   fraction.js@4.3.7:
     resolution: {integrity: sha512-ZsDfxO51wGAXREY55a7la9LScWpwv9RxIrYABrlvOFBlH/ShPnrtsXeuUIfXKKOVicNxQ+o8JTbJvjS4M89yew==}
+
+  from@0.1.7:
+    resolution: {integrity: sha512-twe20eF1OxVxp/ML/kq2p1uc6KvFK/+vs8WjEbeKmV2He22MKm7YF2ANIt+EOqhJ5L3K/SuuPhk0hWQDjOM23g==}
 
   fs-extra@10.1.0:
     resolution: {integrity: sha512-oRXApq54ETRj4eMiFzGnHWGy+zo5raudjuxN0b8H7s/RU2oW0Wvsx9O0ACRN/kRq9E8Vu/ReskGB5o3ji+FzHQ==}
@@ -1715,6 +1730,9 @@ packages:
     resolution: {integrity: sha512-iPZK6eYjbxRu3uB4/WZ3EsEIMJFMqAoopl3R+zuq0UjcAm/MO6KCweDgPfP3elTztoKP3KtnVHxTn2NHBSDVUw==}
     engines: {node: '>=10'}
 
+  lodash.assign@4.2.0:
+    resolution: {integrity: sha512-hFuH8TY+Yji7Eja3mGiuAxBqLagejScbG8GbG0j6o9vzn0YL14My+ktnqtZgFTosKymC9/44wP6s7xyuLfnClw==}
+
   lodash.merge@4.6.2:
     resolution: {integrity: sha512-0KpjqXRVvrYyCsX1swR/XTK0va6VQkQM6MNo7PqW77ByjAhoARA8EfrP1N4+KlKj8YS0ZUCtRT/YUuhyYDujIQ==}
 
@@ -1735,6 +1753,9 @@ packages:
 
   magic-string@0.30.17:
     resolution: {integrity: sha512-sNPKHvyjVf7gyjwS4xGTaW/mCnF8wnjtifKBEhxfZ7E/S8tQ0rssrwGNn6q8JH/ohItJfSQp9mBtQYuTlH5QnA==}
+
+  map-stream@0.0.7:
+    resolution: {integrity: sha512-C0X0KQmGm3N2ftbTGBhSyuydQ+vV1LC3f3zPvT3RXHXNZrvfPZcoXp/N5DOa8vedX/rTMm2CjTtivFg2STJMRQ==}
 
   memorystream@0.3.1:
     resolution: {integrity: sha512-S3UwM3yj5mtUSEfP41UZmt/0SCoVYUcU1rkXv+BQ5Ig8ndL4sPoJNBUJERafdPb5jjHJGuMgytgKvKIf58XNBw==}
@@ -1762,6 +1783,9 @@ packages:
   mimic-fn@4.0.0:
     resolution: {integrity: sha512-vqiC06CuhBTUdZH+RYl8sFrL096vA45Ok5ISO6sE/Mr1jRbGH4Csnhi8f3wKVl7x8mO4Au7Ir9D3Oyv1VYMFJw==}
     engines: {node: '>=12'}
+
+  mingo@6.5.2:
+    resolution: {integrity: sha512-dDa8txMjCxpJg3jXlgwHmiePfa1yNeNGNvwHeS/h5sU2vsnnOUE346FR29632Edi8yAx844rr8QWiNxEq6F2NA==}
 
   minimatch@3.1.2:
     resolution: {integrity: sha512-J7p63hRiAjw1NDEww1W7i37+ByIrOWO5XQQAzZ3VOcL0PNybwpfmV/N05zFAzwQ9USyEcX6t3UO+K5aqBQOIHw==}
@@ -1966,6 +1990,9 @@ packages:
 
   pathe@2.0.2:
     resolution: {integrity: sha512-15Ztpk+nov8DR524R4BF7uEuzESgzUEAV4Ah7CUMNGXdE5ELuvxElxGXndBl32vMSsWa1jpNf22Z+Er3sKwq+w==}
+
+  pause-stream@0.0.11:
+    resolution: {integrity: sha512-e3FBlXLmN/D1S+zHzanP4E/4Z60oFAa3O051qt1pxa7DEJWKAyil6upYVXCWadEnuoqa4Pkc9oUx9zsxYeRv8A==}
 
   perfect-debounce@1.0.0:
     resolution: {integrity: sha512-xCy9V055GLEqoFaHoC1SoLIaLmWctgCUaBaWxDZ7/Zx4CTyX7cJQLJOok/orfjZAh9kEYpjJa4d0KcJmCbctZA==}
@@ -2284,6 +2311,9 @@ packages:
     engines: {node: '>=16.0.0'}
     hasBin: true
 
+  save@2.9.0:
+    resolution: {integrity: sha512-eg8+g8CjvehE/2C6EbLdtK1pINVD27pcJLj4M9PjWWhoeha/y5bWf4dp/0RF+OzbKTcG1bae9qi3PAqiR8CJTg==}
+
   scule@1.3.0:
     resolution: {integrity: sha512-6FtHJEvt+pVMIB9IBY+IcCJ6Z5f1iQnytgyfKMhDKgmzYG+TeH/wx1y3l27rshSbLiSanrR9ffZDrEsmjlQF2g==}
 
@@ -2334,12 +2364,18 @@ packages:
     resolution: {integrity: sha512-1POYv7uv2gXoyGFpBCmpDVSNV74IfsWlDW216UPjbWufNf+bSU6GdbDsxdcxtfwb4xlI3yxzOTKClUosxARYrQ==}
     engines: {node: '>=0.10.0'}
 
+  split@1.0.1:
+    resolution: {integrity: sha512-mTyOoPbrivtXnwnIxZRFYRrPNtEFKlpB2fvjSnCQUiAA6qAZzqwna5envK4uk6OIeP17CsdF3rSBGYVBsU0Tkg==}
+
   stackblur-canvas@2.7.0:
     resolution: {integrity: sha512-yf7OENo23AGJhBriGx0QivY5JP6Y1HbrrDI6WLt6C5auYZXlQrheoY8hD4ibekFKz1HOfE48Ww8kMWMnJD/zcQ==}
     engines: {node: '>=0.1.14'}
 
   std-env@3.8.0:
     resolution: {integrity: sha512-Bc3YwwCB+OzldMxOXJIIvC6cPRWr/LxOp48CdQTOkPyk/t4JWWJbrilwBd7RJzKV8QW7tJkcgAmeuLLJugl5/w==}
+
+  stream-combiner@0.2.2:
+    resolution: {integrity: sha512-6yHMqgLYDzQDcAkL+tjJDC5nSNuNIx0vZtRZeiPh7Saef7VHX9H5Ijn9l2VIol2zaNYlYEX6KyuT/237A58qEQ==}
 
   string-width@4.2.3:
     resolution: {integrity: sha512-wKyQRQpjJ0sIp62ErSZdGsjMJWsap5oRNihHhu6G7JVO/9jIB6UyevL+tXuOqrng8j/cxKTWyWUwvSTriiZz/g==}
@@ -2430,6 +2466,9 @@ packages:
 
   thenify@3.3.1:
     resolution: {integrity: sha512-RVZSIV5IG10Hk3enotrhvz0T9em6cyHBLkH/YAZuKqd8hRkKhSfCGIcP2KUY0EPxndzANBmNllzWPwak+bheSw==}
+
+  through@2.3.8:
+    resolution: {integrity: sha512-w89qg7PI8wAdvX60bMDP+bFoD5Dvhm9oLheFp5O4a2QF0cSBGsBX4qZmadPMvVqlLJBBci+WqGGOAPvcDeNSVg==}
 
   tiny-case@1.0.3:
     resolution: {integrity: sha512-Eet/eeMhkO6TX8mnUteS9zgPbUMQa4I6Kkp5ORiBD5476/m+PIRiumP5tmh5ioJpH7k51Kehawy2UDfsnxxY8Q==}
@@ -3941,6 +3980,8 @@ snapshots:
 
   dotenv@16.4.7: {}
 
+  duplexer@0.1.2: {}
+
   eastasianwidth@0.2.0: {}
 
   ejs@3.1.10:
@@ -4106,6 +4147,16 @@ snapshots:
 
   esutils@2.0.3: {}
 
+  event-stream@4.0.1:
+    dependencies:
+      duplexer: 0.1.2
+      from: 0.1.7
+      map-stream: 0.0.7
+      pause-stream: 0.0.11
+      split: 1.0.1
+      stream-combiner: 0.2.2
+      through: 2.3.8
+
   event-target-shim@5.0.1: {}
 
   execa@8.0.1:
@@ -4193,6 +4244,8 @@ snapshots:
       web-streams-polyfill: 4.0.0-beta.3
 
   fraction.js@4.3.7: {}
+
+  from@0.1.7: {}
 
   fs-extra@10.1.0:
     dependencies:
@@ -4436,6 +4489,8 @@ snapshots:
     dependencies:
       p-locate: 5.0.0
 
+  lodash.assign@4.2.0: {}
+
   lodash.merge@4.6.2: {}
 
   lodash@4.17.21: {}
@@ -4458,6 +4513,8 @@ snapshots:
     dependencies:
       '@jridgewell/sourcemap-codec': 1.5.0
 
+  map-stream@0.0.7: {}
+
   memorystream@0.3.1: {}
 
   merge-stream@2.0.0: {}
@@ -4476,6 +4533,8 @@ snapshots:
       mime-db: 1.52.0
 
   mimic-fn@4.0.0: {}
+
+  mingo@6.5.2: {}
 
   minimatch@3.1.2:
     dependencies:
@@ -4666,6 +4725,10 @@ snapshots:
   pathe@1.1.2: {}
 
   pathe@2.0.2: {}
+
+  pause-stream@0.0.11:
+    dependencies:
+      through: 2.3.8
 
   perfect-debounce@1.0.0: {}
 
@@ -4943,6 +5006,13 @@ snapshots:
       sass-embedded-win32-ia32: 1.79.5
       sass-embedded-win32-x64: 1.79.5
 
+  save@2.9.0:
+    dependencies:
+      async: 3.2.6
+      event-stream: 4.0.1
+      lodash.assign: 4.2.0
+      mingo: 6.5.2
+
   scule@1.3.0: {}
 
   semver@6.3.1: {}
@@ -4978,10 +5048,19 @@ snapshots:
 
   speakingurl@14.0.1: {}
 
+  split@1.0.1:
+    dependencies:
+      through: 2.3.8
+
   stackblur-canvas@2.7.0:
     optional: true
 
   std-env@3.8.0: {}
+
+  stream-combiner@0.2.2:
+    dependencies:
+      duplexer: 0.1.2
+      through: 2.3.8
 
   string-width@4.2.3:
     dependencies:
@@ -5106,6 +5185,8 @@ snapshots:
   thenify@3.3.1:
     dependencies:
       any-promise: 1.3.0
+
+  through@2.3.8: {}
 
   tiny-case@1.0.3: {}
 
