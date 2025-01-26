@@ -5,7 +5,7 @@ import HomeRoutes from '../modules/Home/routes.routes';
 import { createRouter, createWebHistory } from 'vue-router';
 
 const router = createRouter({
-  history: createWebHistory(import.meta.env.BASE_URL),
+  history: createWebHistory(),
   routes: [AuthorizationRoutes, BusinessRoutes, HomeRoutes],
 });
 
