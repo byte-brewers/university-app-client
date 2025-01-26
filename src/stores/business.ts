@@ -12,7 +12,7 @@ export const useBusinessStore = defineStore(
   () => {
     const { generatePrompt } = usePrompt();
     const openAiData = ref<IOpenAiData>();
-    const isLoaded = ref(true);
+    const isLoaded = ref(false);
 
     const fetchOpenAi = async (value: IFormData) => {
       const { data } = await supabase.from('client').select().single();
