@@ -2,7 +2,7 @@ import {
   EHomeComponents,
   EHomeRoutesName,
   EHomeRoutesPath,
-} from './routes/EHomeRoutes'
+} from './routes/EHomeRoutes';
 
 export default {
   redirect: { name: EHomeRoutesName.HOME },
@@ -16,4 +16,4 @@ export default {
       name: EHomeRoutesName.HOME,
     },
   ],
-}
+};

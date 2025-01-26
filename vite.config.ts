@@ -12,5 +12,5 @@ export default defineConfig({
     },
   },
   plugins: [vue(), vueDevTools()],
-  base: 'university-app-client',
+  base: '/university-app-client',
 });
