@@ -9,7 +9,7 @@ import OpenAI from 'openai';
 export const useBusinessStore = defineStore(
   'businessStore',
   () => {
-    const OPENAI_API_KEY = import.meta.env.VITE_OPENAI_API_KEY as string;
+    const OPENAI_API_KEY = window.key;
     const { generatePrompt } = usePrompt();
     const openAiData = ref<IOpenAiData>();
     const isLoaded = ref(false);

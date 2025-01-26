@@ -22,3 +22,9 @@ vue.use(router);
 
 const selector = '#app';
 vue.mount(selector);
+
+declare global {
+  interface Window {
+    key: string;
+  }
+}
