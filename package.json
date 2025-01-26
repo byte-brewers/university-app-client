@@ -1,5 +1,6 @@
 {
   "name": "university-app-client",
+  "homepage": "https://byte-brewers.github.io/university-app-client/",
   "version": "0.0.0",
   "private": true,
   "type": "module",
