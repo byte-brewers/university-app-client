@@ -1,2 +1,2 @@
 export const OPENAI_API_KEY =
-  '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';
+  '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';
