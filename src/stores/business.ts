@@ -4,14 +4,13 @@ import { usePrompt } from '@/modules/Business/composable/usePrompt';
 import { defineStore } from 'pinia';
 import { ref } from 'vue';
 
-require('dotenv').config();
-
 import OpenAI from 'openai';
 
 export const useBusinessStore = defineStore(
   'businessStore',
   () => {
-    const OPENAI_API_KEY = process.env.API_KEY;
+    const OPENAI_API_KEY =
+      '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';
     const { generatePrompt } = usePrompt();
     const openAiData = ref<IOpenAiData>();
     const isLoaded = ref(false);
