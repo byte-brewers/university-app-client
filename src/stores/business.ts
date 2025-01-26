@@ -10,7 +10,7 @@ export const useBusinessStore = defineStore(
   'businessStore',
   () => {
     const OPENAI_API_KEY =
-      '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';
+      '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';
     const { generatePrompt } = usePrompt();
     const openAiData = ref<IOpenAiData>();
     const isLoaded = ref(false);
