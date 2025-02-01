@@ -94,7 +94,11 @@ const getBusinessmainPlan = computed(() => {
       >
         {{ backCaption }}
       </ElButton>
-      <ElButton :button-action="printArticleHandler" :variant="'primary'">
+      <ElButton
+        :button-action="printArticleHandler"
+        :variant="'primary'"
+        :disabled="businessStore.isLoaded"
+      >
         {{ downloadCaption }}
       </ElButton>
     </div>

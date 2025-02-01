@@ -68,5 +68,10 @@ const variantStyle = computed(() => {
   &__text {
     @apply text-lg font-bold;
   }
+
+  &:disabled {
+    @apply bg-[#f0f0f0] text-[#bfbfbf];
+    @apply cursor-not-allowed;
+  }
 }
 </style>
