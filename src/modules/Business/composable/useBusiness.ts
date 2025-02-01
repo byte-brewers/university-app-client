@@ -35,7 +35,7 @@ export function useBusiness() {
     startUpCapital: {
       label: 'What kind of start-up capital do you plan to invest?',
       name: 'startUpCapital',
-      type: 'text',
+      type: 'number',
     },
     salesChannels: {
       label: 'What sales channels do you plan to utilize?',

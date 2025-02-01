@@ -13,3 +13,22 @@ body {
 html {
   @apply pt-16;
 }
+
+@media print {
+  body {
+    visibility: hidden;
+  }
+
+  #print-area {
+    visibility: visible;
+    position: absolute;
+    width: 100%;
+    left: 0;
+    top: 0;
+
+    .masonry-wall {
+      flex-direction: column;
+      display: flex;
+    }
+  }
+}

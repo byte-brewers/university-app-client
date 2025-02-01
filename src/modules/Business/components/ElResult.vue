@@ -11,8 +11,17 @@ import { computed, ref } from 'vue';
 const { setStepValueHandler } = useBusiness();
 const businessStore = useBusinessStore();
 
-// const downloadCaption = ref<string>('DOWNLOAD');
+const downloadCaption = ref<string>('PRINT');
 const backCaption = ref<string>('BACK');
+
+const printArticleHandler = () => {
+  // const printArea = document.getElementById('print-area');
+  // const body = document.body;
+
+  // if (printArea) body.appendChild(printArea);
+
+  window.print();
+};
 
 const getBusinessOtherPlan = computed(() => {
   return businessStore.openAiData?.others
@@ -32,40 +41,46 @@ const getBusinessmainPlan = computed(() => {
 
 <template>
   <StepPanel v-slot="{ activateCallback }" value="3">
-    <div class="stepper__wrapper">
+    <div class="stepper__wrapper" id="print-area">
       <div class="stepper__content">
         <ElLoader v-if="businessStore.isLoaded" />
         <div class="grid gap-4" v-else>
-          <div class="stepper__answers">
-            <Fieldset
-              v-for="(item, index) in getBusinessmainPlan"
-              :key="item.step"
-              :legend="`Step ${item.step}. ${item.title}`"
-              :class="
-                index === getBusinessmainPlan.length - 1
-                  ? 'stepper__answers-single'
-                  : 'stepper__answers-double'
-              "
-            >
-              <div class="stepper__answers-content">
-                <b>1:</b> {{ item.what_i_have_to_do }} <b>2:</b>
-                {{ item.where_to_start }}
-              </div>
-            </Fieldset>
+          <div>
+            <div class="caption">Strengthening foundations</div>
+            <div class="stepper__answers">
+              <Fieldset
+                v-for="(item, index) in getBusinessmainPlan"
+                :key="item.step"
+                :legend="`Step ${item.step}. ${item.title}`"
+                :class="
+                  index === getBusinessmainPlan.length - 1
+                    ? 'stepper__answers-single'
+                    : 'stepper__answers-double'
+                "
+              >
+                <div class="stepper__answers-content">
+                  <b>1:</b> {{ item.what_i_have_to_do }} <b>2:</b>
+                  {{ item.where_to_start }}
+                </div>
+              </Fieldset>
+            </div>
           </div>
-          <div class="stepper__others">
-            <masonry-wall
-              :items="getBusinessOtherPlan"
-              :column-width="250"
-              :ssr-columns="1"
-              :gap="16"
-            >
-              <template #default="{ item }">
-                <Panel :header="item.title">
-                  <div>{{ item.text }}</div>
-                </Panel>
-              </template>
-            </masonry-wall>
+          <div>
+            <div class="caption">My recommendation</div>
+            <div class="stepper__others">
+              <masonry-wall
+                :items="getBusinessOtherPlan"
+                :column-width="250"
+                :ssr-columns="1"
+                :gap="16"
+              >
+                <template #default="{ item }">
+                  <Panel :header="item.title">
+                    <div>{{ item.text }}</div>
+                  </Panel>
+                </template>
+              </masonry-wall>
+            </div>
           </div>
         </div>
       </div>
@@ -79,12 +94,9 @@ const getBusinessmainPlan = computed(() => {
       >
         {{ backCaption }}
       </ElButton>
-      <!-- <ElButton
-        :button-action="() => console.log('download')"
-        :variant="'primary'"
-      >
+      <ElButton :button-action="printArticleHandler" :variant="'primary'">
         {{ downloadCaption }}
-      </ElButton> -->
+      </ElButton>
     </div>
   </StepPanel>
 </template>
@@ -151,5 +163,10 @@ const getBusinessmainPlan = computed(() => {
     @apply text-sm text-gray-600;
     @apply text-justify;
   }
+}
+
+.caption {
+  @apply text-3xl font-bold text-center;
+  @apply uppercase mb-4;
 }
 </style>

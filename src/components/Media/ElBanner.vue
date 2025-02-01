@@ -89,7 +89,7 @@ const variantStyle = computed(() => {
 
     img {
       @apply h-full w-full object-cover;
-      @apply blur-[4px];
+      @apply blur-[1px];
     }
   }
 
