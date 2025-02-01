@@ -1,8 +1,11 @@
 import type { IFormData } from '../models/IFormData';
+import { useBusinessStore } from '@/stores/business';
 import { object, string } from 'yup';
 import { ref } from 'vue';
 
 export function useBusiness() {
+  const businessStore = useBusinessStore();
+
   const schema = object().shape({
     productOrService: string().required('Product or service is required'),
     targetAudience: string().required('Target audience is required'),
@@ -83,6 +86,7 @@ export function useBusiness() {
     value: string;
   }) => {
     await setStorageStepValue(value);
+    await businessStore.clearState();
     activateCallback(value);
   };
 

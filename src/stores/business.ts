@@ -57,13 +57,13 @@ export const useBusinessStore = defineStore(
       }
     };
 
-    const resetOpenAiData = () => {
+    const clearState = () => {
       openAiData.value = undefined;
     };
 
     return {
-      resetOpenAiData,
       fetchOpenAi,
+      clearState,
       openAiData,
       isLoaded,
     };
