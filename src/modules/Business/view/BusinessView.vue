@@ -7,6 +7,7 @@ import Step from 'primevue/step';
 import ElInitial from '../components/ElInitial.vue';
 import ElQuizai from '../components/ElQuizai.vue';
 import ElResult from '../components/ElResult.vue';
+import ElFaq from '@/components/FAQ/ElFaq.vue';
 import { useBusiness } from '../composable/useBusiness';
 import { computed } from 'vue';
 
@@ -41,6 +42,8 @@ const currentStep = computed(() => {
             <ElResult />
           </StepPanels>
         </Stepper>
+
+        <ElFaq />
       </section>
     </template>
   </AppContainer>
