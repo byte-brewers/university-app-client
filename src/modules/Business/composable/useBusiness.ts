@@ -1,6 +1,6 @@
 import type { IFormData } from '../models/IFormData';
 import { useBusinessStore } from '@/stores/business';
-import { object, string, number } from 'yup';
+import { object, string } from 'yup';
 import { ref } from 'vue';
 
 export function useBusiness() {
@@ -10,7 +10,7 @@ export function useBusiness() {
     productOrService: string().required('Product or service is required'),
     targetAudience: string().required('Target audience is required'),
     regionOrCity: string().required('Region or city is required'),
-    startUpCapital: number().required('Start-up capital is required'),
+    startUpCapital: string().required('Start-up capital is required'),
     salesChannels: string().required('Sales channels are required'),
     keyCosts: string().required('Key costs are required'),
     mainGoals: string().required('Main goals are required'),
@@ -35,7 +35,7 @@ export function useBusiness() {
     startUpCapital: {
       label: 'What kind of start-up capital do you plan to invest?',
       name: 'startUpCapital',
-      type: 'text',
+      type: 'number',
     },
     salesChannels: {
       label: 'What sales channels do you plan to utilize?',

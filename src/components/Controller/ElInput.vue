@@ -23,9 +23,10 @@ const { value, errorMessage } = useField<string>(() => props.name);
   <div class="el-input">
     <label :for="label" class="el-input__label">{{ label }}</label>
     <input
-      v-if="type === 'text' || type === 'password'"
+      v-if="type === 'text' || type === 'password' || type === 'number'"
       :class="{ 'el-input__input el-input__input--error': errorMessage }"
       class="el-input__input"
+      :type="type"
       :placeholder="placeholder"
       :id="label"
       v-model="value"
